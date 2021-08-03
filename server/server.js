@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const DB_CONNECTION = require("./config/keys").DB_CONNECTION;
 const { graphqlHTTP } = require("express-graphql");
 const model = require("./model");
@@ -19,6 +20,7 @@ mongoose
 
 const app = express();
 
+app.use(bodyParser.json());
 app.use(
   "/graphql",
   graphqlHTTP({
