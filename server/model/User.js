@@ -38,9 +38,7 @@ UserSchema.statics.addCoinToWallet = async (userId, coinId) => {
     }
   );
 
-  const user = await User.findById(userId);
-
-  return user;
+  return await User.findById(userId);
 };
 
 module.exports = mongoose.model("user", UserSchema);
