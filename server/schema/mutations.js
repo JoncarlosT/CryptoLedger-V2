@@ -20,9 +20,9 @@ const mutation = new GraphQLObjectType({
     register: {
       type: UserType,
       args: {
-        name: { type: GraphQLString },
-        email: { type: GraphQLString },
-        password: { type: GraphQLString },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(_, { name, email, password }) {
         return new User({ name, email, password }).save();
@@ -32,13 +32,14 @@ const mutation = new GraphQLObjectType({
     addCoinToUserWallet: {
       type: UserType,
       args: {
-        userId: { type: GraphQLID },
-        name: { type: GraphQLString },
-        amount: { type: GraphQLInt },
-        buyPrice: { type: GraphQLInt },
-        cryptoImage: { type: GraphQLString },
+        userId: { type: new GraphQLNonNull(GraphQLID) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        amount: { type: new GraphQLNonNull(GraphQLInt) },
+        buyPrice: { type: new GraphQLNonNull(GraphQLInt) },
+        cryptoImage: { type: new GraphQLNonNull(GraphQLString) },
       },
       async resolve(_, { userId, name, amount, buyPrice, cryptoImage }) {
+        //TODO ADD CHECK IF USER ALREADY HAS COIN
         const newCoin = await new CryptoCoin({
           name,
           amount,
