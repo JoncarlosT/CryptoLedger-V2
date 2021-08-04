@@ -23,16 +23,24 @@ const mutation = new GraphQLObjectType({
       },
     },
 
-    newCryptoCoin: {
-      type: CryptoCoinType,
+    addCoinToUserWallet: {
+      type: UserType,
       args: {
+        userId: { type: GraphQLID },
         name: { type: GraphQLString },
         amount: { type: GraphQLInt },
         buyPrice: { type: GraphQLInt },
         cryptoImage: { type: GraphQLString },
       },
-      resolve(_, { name, amount, buyPrice, cryptoImage }) {
-        return new CryptoCoin({ name, amount, buyPrice, cryptoImage }).save();
+      async resolve(_, { userId, name, amount, buyPrice, cryptoImage }) {
+        const newCoin = await new CryptoCoin({
+          name,
+          amount,
+          buyPrice,
+          cryptoImage,
+        }).save();
+
+        return User.addCoinToWallet(userId, newCoin._id);
       },
     },
   },
