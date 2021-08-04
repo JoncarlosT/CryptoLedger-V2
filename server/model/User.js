@@ -28,4 +28,17 @@ const UserSchema = new Schema({
   ],
 });
 
+UserSchema.statics.addCoinToWallet = async (userId, coinId) => {
+  const User = mongoose.model("user");
+
+  await User.updateOne(
+    { _id: userId },
+    {
+      $push: { cryptoWallet: coinId },
+    }
+  );
+
+  return await User.findById(userId);
+};
+
 module.exports = mongoose.model("user", UserSchema);
