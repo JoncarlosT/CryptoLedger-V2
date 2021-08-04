@@ -68,6 +68,19 @@ const mutation = new GraphQLObjectType({
         );
       },
     },
+
+    removeCoin: {
+      type: UserType,
+      args: {
+        userId: { type: new GraphQLNonNull(GraphQLID) },
+        coinId: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      async resolve(_, { userId, coinId }) {
+        await CryptoCoin.findByIdAndDelete(coinId);
+
+        return User.findById(userId);
+      },
+    },
   },
 });
 
