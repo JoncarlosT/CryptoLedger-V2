@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const DB_CONNECTION = require("./config/keys").DB_CONNECTION;
 const { graphqlHTTP } = require("express-graphql");
+const cors = require("cors");
 const model = require("./model");
 const schema = require("./schema/schema");
 
@@ -22,6 +23,7 @@ mongoose
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use(
   "/graphql",
   graphqlHTTP({
