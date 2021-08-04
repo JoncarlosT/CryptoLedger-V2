@@ -39,7 +39,16 @@ const mutation = new GraphQLObjectType({
         cryptoImage: { type: new GraphQLNonNull(GraphQLString) },
       },
       async resolve(_, { userId, name, amount, buyPrice, cryptoImage }) {
-        //TODO ADD CHECK IF USER ALREADY HAS COIN
+        const currentUserWallet = await User.findById(userId)
+          .populate("cryptoWallet")
+          .then((user) => user.cryptoWallet);
+
+        currentUserWallet.forEach((coin) => {
+          if (coin.name === name) {
+            throw new Error("Sorry you already have that coin");
+          }
+        });
+
         const newCoin = await new CryptoCoin({
           name,
           amount,
