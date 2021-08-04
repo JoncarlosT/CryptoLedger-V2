@@ -22,7 +22,6 @@ const CryptoCoinSchema = new Schema({
 CryptoCoinSchema.pre("findOneAndDelete", function (next) {
   coinId = this.getQuery()["_id"];
 
-  console.log(coinId);
   mongoose
     .model("user")
     .find({ cryptoWallet: coinId })
