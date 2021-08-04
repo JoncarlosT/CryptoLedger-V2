@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } = graphql;
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLID,
+  GraphQLNonNull,
+} = graphql;
 
 const UserType = require("./types/user_type");
 const User = mongoose.model("user");
@@ -41,6 +47,25 @@ const mutation = new GraphQLObjectType({
         }).save();
 
         return User.addCoinToWallet(userId, newCoin._id);
+      },
+    },
+
+    updateCoin: {
+      type: CryptoCoinType,
+      args: {
+        _id: { type: new GraphQLNonNull(GraphQLID) },
+        amount: { type: new GraphQLNonNull(GraphQLInt) },
+        buyPrice: { type: new GraphQLNonNull(GraphQLInt) },
+      },
+      resolve(_, { _id, amount, buyPrice }) {
+        return CryptoCoin.findByIdAndUpdate(
+          { _id: _id },
+          { $set: { amount, buyPrice } },
+          { new: true },
+          (err, coin) => {
+            return coin;
+          }
+        );
       },
     },
   },
