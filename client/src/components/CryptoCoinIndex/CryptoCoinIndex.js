@@ -1,7 +1,14 @@
 import React from "react";
 import { Query } from "react-apollo";
 import { FETCH_COINS } from "../../graphql/queries";
-import { StyledCoin, StyledCoinText, StyledCoinImage } from "./styles";
+import {
+  Chart,
+  Coin,
+  CoinText,
+  ChartHeader,
+  CoinImage,
+  ChartText,
+} from "./styles";
 
 const CryptoCoinIndex = ({ numOfCoin }) => {
   return (
@@ -19,18 +26,26 @@ const CryptoCoinIndex = ({ numOfCoin }) => {
         console.log(fetchCoins);
 
         return (
-          <div>
+          <Chart>
+            <ChartHeader>
+              <ChartText>Coin</ChartText>
+              <ChartText>Price</ChartText>
+              <ChartText>volume</ChartText>
+            </ChartHeader>
+
             {fetchCoins.map((coin, idx) => {
               return (
-                <StyledCoin key={idx}>
-                  <StyledCoinImage src={coin.image} alt={coin.name} />
-                  <StyledCoinText>{coin.name}</StyledCoinText>
-                  <StyledCoinText>{coin.symbol}</StyledCoinText>
-                  <StyledCoinText>{coin.total_volume}</StyledCoinText>
-                </StyledCoin>
+                <Coin key={idx}>
+                  <CoinImage src={coin.image} alt={coin.name} />
+                  <ChartText>{coin.name}</ChartText>
+                  <ChartText>{coin.symbol}</ChartText>
+                  <ChartText>{coin.current_price}</ChartText>
+                  <ChartText>{coin.total_volume}</ChartText>
+                  <ChartText>{coin.market_cap}</ChartText>
+                </Coin>
               );
             })}
-          </div>
+          </Chart>
         );
       }}
     </Query>

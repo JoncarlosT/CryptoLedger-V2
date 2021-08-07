@@ -8,6 +8,7 @@ export const FETCH_COINS = gql`
       image
       market_cap
       total_volume
+      current_price
     }
   }
 `;
