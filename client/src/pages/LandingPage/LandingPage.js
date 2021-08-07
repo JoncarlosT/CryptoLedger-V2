@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 
-import CryptoCoinIndex from "../../components/CryptoCoinIndex";
+import CryptoCoinIndex from "../../components/CryptoCoinIndex/CryptoCoinIndex";
 
-import { StyledLandingPage } from "./styles";
+import { StyledLandingPage, CryptoCoinIndexWrapper } from "./styles";
 
 export default function LandingPage() {
   const [numOfCoin, setNumOfCoin] = useState(5);
 
   return (
     <StyledLandingPage>
-      <CryptoCoinIndex numOfCoin={numOfCoin} />
+      <CryptoCoinIndexWrapper>
+        <CryptoCoinIndex numOfCoin={numOfCoin} />
+      </CryptoCoinIndexWrapper>
     </StyledLandingPage>
   );
 }
