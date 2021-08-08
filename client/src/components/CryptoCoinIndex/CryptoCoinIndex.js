@@ -8,6 +8,7 @@ import {
   ChartHeader,
   CoinImage,
   ChartText,
+  CoinDetailsWrapper,
 } from "./styles";
 
 const CryptoCoinIndex = ({ numOfCoin }) => {
@@ -15,7 +16,7 @@ const CryptoCoinIndex = ({ numOfCoin }) => {
     <Query
       query={FETCH_COINS}
       variables={{
-        num: numOfCoin,
+        num: 10,
       }}
     >
       {({ loading, error, data }) => {
@@ -30,18 +31,22 @@ const CryptoCoinIndex = ({ numOfCoin }) => {
             <ChartHeader>
               <ChartText>Coin</ChartText>
               <ChartText>Price</ChartText>
-              <ChartText>volume</ChartText>
+              <ChartText>Volume</ChartText>
+              <ChartText>Market Cap</ChartText>
             </ChartHeader>
 
             {fetchCoins.map((coin, idx) => {
               return (
                 <Coin key={idx}>
-                  <CoinImage src={coin.image} alt={coin.name} />
-                  <ChartText>{coin.name}</ChartText>
-                  <ChartText>{coin.symbol}</ChartText>
-                  <ChartText>{coin.current_price}</ChartText>
-                  <ChartText>{coin.total_volume}</ChartText>
-                  <ChartText>{coin.market_cap}</ChartText>
+                  <CoinDetailsWrapper>
+                    <CoinImage src={coin.image} alt={coin.name} />
+                    <CoinText>{coin.name}</CoinText>
+                    <CoinText>{coin.symbol}</CoinText>
+                  </CoinDetailsWrapper>
+
+                  <CoinText>{coin.current_price}</CoinText>
+                  <CoinText>{coin.total_volume}</CoinText>
+                  <CoinText>{coin.market_cap}</CoinText>
                 </Coin>
               );
             })}
