@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const StyledLandingPage = styled.div`
-  height: 100vh;
-  width: 100vw;
-`;
-
-export const CryptoCoinIndexWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: pink;
+`;
+
+export const CryptoCoinIndexWrapper = styled.div`
+  width: 75%;
+  padding-top: 100px;
 `;

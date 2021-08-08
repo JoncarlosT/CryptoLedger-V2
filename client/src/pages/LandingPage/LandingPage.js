@@ -10,7 +10,7 @@ export default function LandingPage() {
   return (
     <StyledLandingPage>
       <CryptoCoinIndexWrapper>
-        <CryptoCoinIndex numOfCoin={numOfCoin} />
+        <CryptoCoinIndex />
       </CryptoCoinIndexWrapper>
     </StyledLandingPage>
   );
