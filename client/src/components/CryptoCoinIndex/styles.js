@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ChartRow = styled.div`
   display: flex;
@@ -23,6 +24,14 @@ export const CoinDetail = styled.div`
   justify-content: space-between;
   width: inherit;
   height: inherit;
+`;
+
+export const CoinDetailLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+  :hover {
+    color: red;
+  }
 `;
 
 export const CoinIcon = styled.img`

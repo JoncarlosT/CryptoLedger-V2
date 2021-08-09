@@ -2,7 +2,13 @@ import React from "react";
 import { Query } from "react-apollo";
 import CryptoCoinChart from "../CryptoCoinChart/CryptoCoinChart";
 import { FETCH_COINS } from "../../graphql/queries";
-import { ChartRow, ChartBox, CoinDetail, CoinIcon } from "./styles";
+import {
+  ChartRow,
+  ChartBox,
+  CoinDetail,
+  CoinDetailLink,
+  CoinIcon,
+} from "./styles";
 
 const CryptoCoinIndex = () => {
   const coinFormat = (num) => {
@@ -36,22 +42,24 @@ const CryptoCoinIndex = () => {
 
             {fetchCoins.map((coin, idx) => {
               return (
-                <ChartRow key={idx}>
-                  <ChartBox>
-                    <CoinDetail>
-                      <CoinIcon src={coin.image} alt={coin.name} />
-                      <div>{coin.name}</div>
-                      <div>{coin.symbol}</div>
-                    </CoinDetail>
-                  </ChartBox>
+                <CoinDetailLink to={`/coins/${coin.id}`} key={idx}>
+                  <ChartRow>
+                    <ChartBox>
+                      <CoinDetail>
+                        <CoinIcon src={coin.image} alt={coin.name} />
+                        <div>{coin.name}</div>
+                        <div>{coin.symbol}</div>
+                      </CoinDetail>
+                    </ChartBox>
 
-                  <ChartBox>${coinFormat(coin.current_price)}</ChartBox>
-                  <ChartBox>${coinFormat(coin.total_volume)}</ChartBox>
-                  <ChartBox>${coinFormat(coin.market_cap)}</ChartBox>
-                  <ChartBox>
-                    <CryptoCoinChart coinId={coin.id} days={7} />
-                  </ChartBox>
-                </ChartRow>
+                    <ChartBox>${coinFormat(coin.current_price)}</ChartBox>
+                    <ChartBox>${coinFormat(coin.total_volume)}</ChartBox>
+                    <ChartBox>${coinFormat(coin.market_cap)}</ChartBox>
+                    <ChartBox>
+                      <CryptoCoinChart coinId={coin.id} days={7} />
+                    </ChartBox>
+                  </ChartRow>
+                </CoinDetailLink>
               );
             })}
           </>

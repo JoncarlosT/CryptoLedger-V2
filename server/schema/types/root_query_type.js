@@ -6,6 +6,7 @@ const {
   GraphQLID,
   GraphQLNonNull,
   GraphQLInt,
+  GraphQLString,
 } = graphql;
 const fetch = require("node-fetch");
 
@@ -15,8 +16,9 @@ const User = mongoose.model("user");
 const CryptoCoinType = require("./cryptocoin_type");
 const CryptoCoin = mongoose.model("cryptocoin");
 
-const FetchCoinType = require("./queryCoin_type");
+const FetchCoinsType = require("./queryCoins_type");
 const FetchCoinChartHistory = require("./queryCoinChartHistory_type");
+const FetchSingleCoin = require("./querySingleCoin");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
@@ -44,13 +46,27 @@ const RootQueryType = new GraphQLObjectType({
     },
 
     fetchCoins: {
-      type: new GraphQLList(FetchCoinType),
+      type: new GraphQLList(FetchCoinsType),
       args: {
         numOfCoins: { type: new GraphQLNonNull(GraphQLInt) },
       },
       async resolve(_, { numOfCoins }) {
         const response = await fetch(
           `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${numOfCoins}&page=1&sparkline=false`
+        ).then((res) => res.json());
+
+        return response;
+      },
+    },
+
+    fetchSingleCoin: {
+      type: FetchSingleCoin,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      async resolve(_, { id }) {
+        const response = await fetch(
+          `https://api.coingecko.com/api/v3/coins/${id}`
         ).then((res) => res.json());
 
         return response;

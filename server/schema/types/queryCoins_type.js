@@ -1,8 +1,8 @@
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLFloat } = graphql;
 
-const FetchCoinType = new GraphQLObjectType({
-  name: "FetchCoinType",
+const FetchCoinsType = new GraphQLObjectType({
+  name: "FetchCoinsType",
   fields: {
     id: { type: GraphQLString },
     symbol: { type: GraphQLString },
@@ -32,4 +32,4 @@ const FetchCoinType = new GraphQLObjectType({
   },
 });
 
-module.exports = FetchCoinType;
+module.exports = FetchCoinsType;
