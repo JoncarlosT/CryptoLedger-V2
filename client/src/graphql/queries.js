@@ -21,3 +21,14 @@ export const FETCH_COIN_CHART_HISTORY = gql`
     }
   }
 `;
+
+export const FETCH_SINGLE_COIN = gql`
+  query FetchSingleCoin($coinId: ID!) {
+    fetchSingleCoin(id: $coinId) {
+      name
+      symbol
+      id
+      description
+    }
+  }
+`;
