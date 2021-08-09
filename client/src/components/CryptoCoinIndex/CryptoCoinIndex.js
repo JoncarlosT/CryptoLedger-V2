@@ -1,22 +1,21 @@
 import React from "react";
 import { Query } from "react-apollo";
+import CryptoCoinChart from "../CryptoCoinChart/CryptoCoinChart";
 import { FETCH_COINS } from "../../graphql/queries";
-import {
-  Chart,
-  Coin,
-  CoinText,
-  ChartHeader,
-  CoinImage,
-  ChartText,
-  CoinDetailsWrapper,
-} from "./styles";
+import { ChartRow, ChartBox, CoinDetail, CoinIcon } from "./styles";
 
-const CryptoCoinIndex = ({ numOfCoin }) => {
+const CryptoCoinIndex = () => {
+  const coinFormat = (num) => {
+    return num >= 100
+      ? num.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,")
+      : num;
+  };
+
   return (
     <Query
       query={FETCH_COINS}
       variables={{
-        num: 10,
+        num: 30,
       }}
     >
       {({ loading, error, data }) => {
@@ -24,33 +23,38 @@ const CryptoCoinIndex = ({ numOfCoin }) => {
         if (error) return <h1>{error}</h1>;
 
         const { fetchCoins } = data;
-        console.log(fetchCoins);
 
         return (
-          <Chart>
-            <ChartHeader>
-              <ChartText>Coin</ChartText>
-              <ChartText>Price</ChartText>
-              <ChartText>Volume</ChartText>
-              <ChartText>Market Cap</ChartText>
-            </ChartHeader>
+          <>
+            <ChartRow>
+              <ChartBox>Coin</ChartBox>
+              <ChartBox>Price</ChartBox>
+              <ChartBox>Volume</ChartBox>
+              <ChartBox>Market Cap</ChartBox>
+              <ChartBox>Coin Chart</ChartBox>
+            </ChartRow>
 
             {fetchCoins.map((coin, idx) => {
               return (
-                <Coin key={idx}>
-                  <CoinDetailsWrapper>
-                    <CoinImage src={coin.image} alt={coin.name} />
-                    <CoinText>{coin.name}</CoinText>
-                    <CoinText>{coin.symbol}</CoinText>
-                  </CoinDetailsWrapper>
+                <ChartRow key={idx}>
+                  <ChartBox>
+                    <CoinDetail>
+                      <CoinIcon src={coin.image} alt={coin.name} />
+                      <div>{coin.name}</div>
+                      <div>{coin.symbol}</div>
+                    </CoinDetail>
+                  </ChartBox>
 
-                  <CoinText>{coin.current_price}</CoinText>
-                  <CoinText>{coin.total_volume}</CoinText>
-                  <CoinText>{coin.market_cap}</CoinText>
-                </Coin>
+                  <ChartBox>${coinFormat(coin.current_price)}</ChartBox>
+                  <ChartBox>${coinFormat(coin.total_volume)}</ChartBox>
+                  <ChartBox>${coinFormat(coin.market_cap)}</ChartBox>
+                  <ChartBox>
+                    <CryptoCoinChart coinId={coin.id} days={7} />
+                  </ChartBox>
+                </ChartRow>
               );
             })}
-          </Chart>
+          </>
         );
       }}
     </Query>
