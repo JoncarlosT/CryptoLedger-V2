@@ -1,35 +1,30 @@
 import styled from "styled-components";
 
-export const Chart = styled.div``;
-
-export const ChartHeader = styled.div`
+export const ChartRow = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
   align-items: center;
+  border-bottom: dotted 1px grey;
 `;
 
-export const ChartText = styled.h1``;
-
-export const Coin = styled.div`
+export const ChartBox = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
   align-items: center;
-  border-bottom: 1px solid #000;
+  justify-content: center;
+  padding: 5px;
+  width: 200px;
 `;
 
-export const CoinDetailsWrapper = styled.div`
+export const CoinDetail = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
   align-items: center;
-  width: 50%;
-  /* background-color: green; */
+  justify-content: space-between;
+  width: inherit;
+  height: inherit;
 `;
 
-export const CoinText = styled.h3`
-  width: 10%;
-`;
-
-export const CoinImage = styled.img`
+export const CoinIcon = styled.img`
   width: 40px;
-  height: 40px;
 `;
