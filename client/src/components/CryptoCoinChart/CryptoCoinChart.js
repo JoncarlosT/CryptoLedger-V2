@@ -4,7 +4,7 @@ import { FETCH_COIN_CHART_HISTORY } from "../../graphql/queries";
 import { Line } from "react-chartjs-2";
 import moment from "moment";
 
-const CryptoCoinChart = ({ coinId, days }) => {
+const CryptoCoinChart = ({ coinId, days, full }) => {
   return (
     <Query
       query={FETCH_COIN_CHART_HISTORY}
@@ -21,7 +21,7 @@ const CryptoCoinChart = ({ coinId, days }) => {
 
         const chartData = {
           labels: prices.map((coin, i) => {
-            return moment(coin[0]).format("MMM Do, h:mm:ss a");
+            return moment(coin[0]).format("MMM Do");
           }),
           datasets: [
             {
@@ -35,20 +35,35 @@ const CryptoCoinChart = ({ coinId, days }) => {
           ],
         };
 
-        const chartOptions = {
+        const miniChartOptions = {
           plugins: {
             legend: { display: false },
           },
+
           scales: {
             x: { display: false },
             y: { display: false },
           },
         };
 
+        const fullChartOptions = {
+          plugins: {
+            legend: { display: false },
+          },
+
+          scales: {
+            x: {
+              ticks: {
+                maxTicksLimit: days,
+              },
+            },
+          },
+        };
+
         return (
           <Line
             data={chartData}
-            options={chartOptions}
+            options={full ? fullChartOptions : miniChartOptions}
             height={250}
             width={650}
           />
