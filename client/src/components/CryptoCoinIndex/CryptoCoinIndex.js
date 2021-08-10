@@ -21,7 +21,7 @@ const CryptoCoinIndex = () => {
     <Query
       query={FETCH_COINS}
       variables={{
-        num: 30,
+        num: 10,
       }}
     >
       {({ loading, error, data }) => {
