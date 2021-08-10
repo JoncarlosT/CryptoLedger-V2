@@ -8,7 +8,7 @@ const CryptoPage = (props) => {
 
   return (
     <StyledCryptoPage>
-      <CryptoCoinChart coinId={coinId} days={5} full={true} />
+      <CryptoCoinChart coinId={coinId} days={7} full={true} />
       <CryptoCoinDetail coinId={coinId} />;
     </StyledCryptoPage>
   );
