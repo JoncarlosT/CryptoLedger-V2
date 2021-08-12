@@ -7,6 +7,7 @@ const {
   GraphQLID,
   GraphQLNonNull,
 } = graphql;
+const AuthService = require("../services/authentication");
 
 const UserType = require("./types/user_type");
 const User = mongoose.model("user");
@@ -89,6 +90,29 @@ const mutation = new GraphQLObjectType({
         await CryptoCoin.findByIdAndDelete(coinId);
 
         return User.findById(userId);
+      },
+    },
+
+    register: {
+      type: UserType,
+      args: {
+        name: { type: GraphQLString },
+        email: { type: GraphQLString },
+        password: { type: GraphQLString },
+      },
+      resolve(_, args) {
+        return AuthService.register(args);
+      },
+    },
+
+    login: {
+      type: UserType,
+      args: {
+        email: { type: GraphQLString },
+        password: { type: GraphQLString },
+      },
+      resolve(_, args) {
+        return AuthService.login(args);
       },
     },
   },

@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } = graphql;
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLID,
+  GraphQLList,
+  GraphQLBoolean,
+} = graphql;
 const User = mongoose.model("user");
 const CryptoCoinType = require("./cryptocoin_type");
 
@@ -18,6 +24,8 @@ const UserType = new GraphQLObjectType({
           .then((user) => user.cryptoWallet);
       },
     },
+    token: { type: GraphQLString },
+    loggedIn: { type: GraphQLBoolean },
   }),
 });
 

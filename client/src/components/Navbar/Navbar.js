@@ -25,6 +25,7 @@ const Navbar = () => {
         onChange={(e) => setCoinId(e.id)}
         onSubmit={handleSelect()}
       />
+      <div>User</div>
     </StyledNavbar>
   );
 };
