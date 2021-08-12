@@ -7,7 +7,7 @@ const {
   GraphQLID,
   GraphQLNonNull,
 } = graphql;
-const AuthService = require("../services/authentication");
+const AuthService = require("../services/auth");
 
 const UserType = require("./types/user_type");
 const User = mongoose.model("user");
