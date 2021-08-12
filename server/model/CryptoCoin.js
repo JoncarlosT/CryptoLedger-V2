@@ -24,8 +24,8 @@ CryptoCoinSchema.pre("findOneAndDelete", function (next) {
 
   mongoose
     .model("user")
-    .updateOne({ cryptoWallet: coinId })
-    .update(
+    .find({ cryptoWallet: coinId })
+    .updateOne(
       {},
       {
         $pull: {
