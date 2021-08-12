@@ -8,6 +8,12 @@ export const LOGIN_USER = gql`
       email
       token
       loggedIn
+      cryptoWallet {
+        _id
+        name
+        amount
+        buyPrice
+      }
     }
   }
 `;

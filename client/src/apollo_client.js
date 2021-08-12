@@ -40,7 +40,14 @@ cache.writeData({
 if (token) {
   client
     .mutate({ mutation: VERIFY_USER, variables: { token } })
-    .then(({ data }) => console.log(data));
+    .then((data) => {
+      cache.writeData({
+        data: {
+          isLoggedIn: data,
+          cryptoWallet: [],
+        },
+      });
+    });
 } else {
   cache.writeData({
     data: {

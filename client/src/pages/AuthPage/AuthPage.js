@@ -1,5 +1,13 @@
 import React from "react";
 
-export default function AuthPage() {
-  return <div>AuthPage</div>;
-}
+import UserLogin from "../../components/UserLogin/UserLogin";
+
+const AuthPage = () => {
+  return (
+    <div>
+      <UserLogin />
+    </div>
+  );
+};
+
+export default AuthPage;

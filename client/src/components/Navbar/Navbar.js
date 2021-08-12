@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <Logo to="/">Home</Logo>
+      <Logo to="/coins">Home</Logo>
       <SearchBar
         filterOption={createFilter({ ignoreAccents: false })}
         options={data}

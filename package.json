@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "full dev": "concurrently \"npm run server\" \"npm run client\"",
+    "full": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "client-install": "npm install --prefix client",
@@ -25,6 +25,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^6.2.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
