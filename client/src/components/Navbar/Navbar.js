@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import data from "../../data/coin_storage.json";
 import { createFilter } from "react-select";
-
+import { Link } from "react-router-dom/";
 import { StyledNavbar, Logo, SearchBar } from "./styles";
 
 const Navbar = () => {
@@ -25,7 +25,7 @@ const Navbar = () => {
         onChange={(e) => setCoinId(e.id)}
         onSubmit={handleSelect()}
       />
-      <div>User</div>
+      <Link to="/auth">User</Link>
     </StyledNavbar>
   );
 };

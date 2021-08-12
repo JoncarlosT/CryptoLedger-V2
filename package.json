@@ -5,6 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
+    "full dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "client-install": "npm install --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
