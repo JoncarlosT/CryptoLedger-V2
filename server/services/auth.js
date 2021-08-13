@@ -64,4 +64,36 @@ const login = async (data) => {
   } catch (err) {}
 };
 
-module.exports = { register, login };
+const logout = async (data) => {
+  try {
+    const { _id } = data;
+    const user = await User.findById(_id);
+
+    if (!user) return new Error("This user doesn't exist");
+
+    const token = "";
+
+    return { token, loggedIn: false, ...user._doc, password: null };
+  } catch (err) {
+    throw err;
+  }
+};
+
+const verifyUser = async (data) => {
+  try {
+    const { token } = data;
+
+    const decoded = jwt.verify(token, keys.secretOrKey);
+    const { id } = decoded;
+
+    const loggedIn = await User.findById(id).then((user) => {
+      return user ? true : false;
+    });
+
+    return { loggedIn };
+  } catch (err) {
+    throw err;
+  }
+};
+
+module.exports = { register, login, logout, verifyUser };
