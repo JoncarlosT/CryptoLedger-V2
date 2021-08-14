@@ -1,8 +1,11 @@
-import ApolloClient from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { createHttpLink } from "apollo-link-http";
-import { onError } from "apollo-link-error";
-import { ApolloLink } from "apollo-link";
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+  ApolloLink,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+import { IS_LOGGED_IN } from "./graphql/queries";
 import { VERIFY_USER } from "./graphql/mutations";
 
 const cache = new InMemoryCache({
@@ -29,30 +32,31 @@ const client = new ApolloClient({
   },
 });
 
-const token = localStorage.getItem("auth-token");
-
-cache.writeData({
+cache.writeQuery({
+  query: IS_LOGGED_IN,
   data: {
-    isLoggedIn: Boolean(token),
+    isLoggedIn: !!localStorage.getItem("auth-token"),
   },
 });
+
+const token = localStorage.getItem("auth-token");
 
 if (token) {
   client
     .mutate({ mutation: VERIFY_USER, variables: { token } })
     .then((data) => {
-      cache.writeData({
+      cache.writeQuery({
+        query: IS_LOGGED_IN,
         data: {
           isLoggedIn: data,
-          cryptoWallet: [],
         },
       });
     });
 } else {
-  cache.writeData({
+  cache.writeQuery({
+    query: IS_LOGGED_IN,
     data: {
       isLoggedIn: false,
-      cryptoWallet: [],
     },
   });
 }

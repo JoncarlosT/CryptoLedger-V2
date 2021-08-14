@@ -1,6 +1,6 @@
 import React from "react";
-import { Query } from "react-apollo";
 import CryptoCoinChart from "../CryptoCoinChart/CryptoCoinChart";
+import { useQuery } from "@apollo/client";
 import { FETCH_COINS } from "../../graphql/queries";
 import {
   ChartRow,
@@ -17,55 +17,50 @@ const CryptoCoinIndex = () => {
       : num;
   };
 
+  const { loading, data, error } = useQuery(FETCH_COINS, {
+    variables: {
+      num: 10,
+    },
+  });
+
+  if (loading) return <h1>Loading</h1>;
+  if (error) return <h1>{error}</h1>;
+
+  const { fetchCoins } = data;
+
   return (
-    <Query
-      query={FETCH_COINS}
-      variables={{
-        num: 10,
-      }}
-    >
-      {({ loading, error, data }) => {
-        if (loading) return <h1>Loading</h1>;
-        if (error) return <h1>{error}</h1>;
+    <>
+      <ChartRow>
+        <ChartBox>Coin</ChartBox>
+        <ChartBox>Price</ChartBox>
+        <ChartBox>Volume</ChartBox>
+        <ChartBox>Market Cap</ChartBox>
+        <ChartBox>Coin Chart</ChartBox>
+      </ChartRow>
 
-        const { fetchCoins } = data;
-
+      {fetchCoins.map((coin, idx) => {
         return (
-          <>
+          <CoinDetailLink to={`/coins/${coin.id}`} key={idx}>
             <ChartRow>
-              <ChartBox>Coin</ChartBox>
-              <ChartBox>Price</ChartBox>
-              <ChartBox>Volume</ChartBox>
-              <ChartBox>Market Cap</ChartBox>
-              <ChartBox>Coin Chart</ChartBox>
+              <ChartBox>
+                <CoinDetail>
+                  <CoinIcon src={coin.image} alt={coin.name} />
+                  <div>{coin.name}</div>
+                  <div>{coin.symbol}</div>
+                </CoinDetail>
+              </ChartBox>
+
+              <ChartBox>${coinFormat(coin.current_price)}</ChartBox>
+              <ChartBox>${coinFormat(coin.total_volume)}</ChartBox>
+              <ChartBox>${coinFormat(coin.market_cap)}</ChartBox>
+              <ChartBox>
+                <CryptoCoinChart coinId={coin.id} days={7} />
+              </ChartBox>
             </ChartRow>
-
-            {fetchCoins.map((coin, idx) => {
-              return (
-                <CoinDetailLink to={`/coins/${coin.id}`} key={idx}>
-                  <ChartRow>
-                    <ChartBox>
-                      <CoinDetail>
-                        <CoinIcon src={coin.image} alt={coin.name} />
-                        <div>{coin.name}</div>
-                        <div>{coin.symbol}</div>
-                      </CoinDetail>
-                    </ChartBox>
-
-                    <ChartBox>${coinFormat(coin.current_price)}</ChartBox>
-                    <ChartBox>${coinFormat(coin.total_volume)}</ChartBox>
-                    <ChartBox>${coinFormat(coin.market_cap)}</ChartBox>
-                    <ChartBox>
-                      <CryptoCoinChart coinId={coin.id} days={7} />
-                    </ChartBox>
-                  </ChartRow>
-                </CoinDetailLink>
-              );
-            })}
-          </>
+          </CoinDetailLink>
         );
-      }}
-    </Query>
+      })}
+    </>
   );
 };
 
