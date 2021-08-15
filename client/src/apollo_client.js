@@ -36,6 +36,7 @@ cache.writeQuery({
   query: IS_LOGGED_IN,
   data: {
     isLoggedIn: !!localStorage.getItem("auth-token"),
+    userData: localStorage.getItem("user-data"),
   },
 });
 
@@ -44,11 +45,12 @@ const token = localStorage.getItem("auth-token");
 if (token) {
   client
     .mutate({ mutation: VERIFY_USER, variables: { token } })
-    .then((data) => {
+    .then(({ data }) => {
       cache.writeQuery({
         query: IS_LOGGED_IN,
         data: {
-          isLoggedIn: data,
+          isLoggedIn: data.verifyUser.loggedIn,
+          userData: localStorage.getItem("user-data"),
         },
       });
     });
@@ -57,6 +59,7 @@ if (token) {
     query: IS_LOGGED_IN,
     data: {
       isLoggedIn: false,
+      userData: null,
     },
   });
 }

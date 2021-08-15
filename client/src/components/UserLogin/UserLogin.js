@@ -16,8 +16,10 @@ const UserLogin = () => {
       password: password,
     },
     onCompleted: (data) => {
+      console.log(data.login);
       const { token } = data.login;
       localStorage.setItem("auth-token", token);
+      localStorage.setItem("user-data", JSON.stringify(data.login));
     },
     update(cache, { data }) {
       cache.writeQuery({
