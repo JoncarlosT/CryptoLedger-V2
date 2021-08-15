@@ -32,7 +32,10 @@ const Navbar = () => {
       />
 
       {data.isLoggedIn ? (
-        <LogoutButton userId={JSON.parse(data.userData)._id} />
+        <>
+          <Link to="/user">User</Link>
+          <LogoutButton userId={JSON.parse(data.userData)._id} />
+        </>
       ) : (
         <Link to="/auth">Log In</Link>
       )}
