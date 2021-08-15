@@ -13,6 +13,7 @@ export const LOGIN_USER = gql`
         name
         amount
         buyPrice
+        cryptoImage
       }
     }
   }

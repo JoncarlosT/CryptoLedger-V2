@@ -8,7 +8,6 @@ const {
   GraphQLBoolean,
 } = graphql;
 const User = mongoose.model("user");
-const CryptoCoinType = require("./cryptocoin_type");
 
 const UserType = new GraphQLObjectType({
   name: "UserType",

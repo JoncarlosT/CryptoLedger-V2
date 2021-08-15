@@ -7,8 +7,6 @@ import { IS_LOGGED_IN } from "../../graphql/queries";
 const LogoutButton = ({ userId }) => {
   const history = useHistory();
 
-  console.log(userId);
-
   const [logoutFunction, { loading, error }] = useMutation(LOGOUT_USER, {
     variables: {
       _id: userId,

@@ -33,6 +33,25 @@ export const FETCH_SINGLE_COIN = gql`
   }
 `;
 
+export const FETCH_SINGLE_USER = gql`
+  query FetchSingleUser($_id: ID!) {
+    user(_id: $_id) {
+      _id
+      name
+      email
+      token
+      loggedIn
+      cryptoWallet {
+        _id
+        name
+        amount
+        buyPrice
+        cryptoImage
+      }
+    }
+  }
+`;
+
 export const IS_LOGGED_IN = gql`
   query IsUserLoggedIn {
     isLoggedIn @client
