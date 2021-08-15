@@ -13,7 +13,29 @@ export const LOGIN_USER = gql`
         name
         amount
         buyPrice
+        cryptoImage
       }
+    }
+  }
+`;
+
+export const LOGOUT_USER = gql`
+  mutation LogoutUser($_id: ID!) {
+    logout(_id: $_id) {
+      token
+      loggedIn
+    }
+  }
+`;
+
+export const REGISTER_USER = gql`
+  mutation RegisterUser($name: String!, $email: String!, $password: String!) {
+    register(name: $name, email: $email, password: $password) {
+      _id
+      name
+      email
+      token
+      loggedIn
     }
   }
 `;
