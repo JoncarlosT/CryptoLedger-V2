@@ -1,11 +1,11 @@
 import React from "react";
 
-import UserLogin from "../../components/UserLogin/UserLogin";
+import UserLoginForm from "../../components/UserLogin/UserLoginForm";
 
 const AuthPage = () => {
   return (
     <div>
-      <UserLogin />
+      <UserLoginForm />
     </div>
   );
 };

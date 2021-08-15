@@ -4,19 +4,18 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../graphql/mutations";
 import { IS_LOGGED_IN } from "../../graphql/queries";
 
-const UserLogin = () => {
+const UserLoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const history = useHistory();
 
-  const [loginFunction, { data, loading, error }] = useMutation(LOGIN_USER, {
+  const [loginFunction, { loading, error }] = useMutation(LOGIN_USER, {
     variables: {
       email: email,
       password: password,
     },
     onCompleted: (data) => {
-      console.log(data.login);
       const { token } = data.login;
       localStorage.setItem("auth-token", token);
       localStorage.setItem("user-data", JSON.stringify(data.login));
@@ -60,4 +59,4 @@ const UserLogin = () => {
   );
 };
 
-export default UserLogin;
+export default UserLoginForm;

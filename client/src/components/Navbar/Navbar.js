@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   const { data } = useQuery(IS_LOGGED_IN);
-  console.log(JSON.parse(data.userData));
+  // JSON.parse(data.userData)
 
   return (
     <StyledNavbar>
