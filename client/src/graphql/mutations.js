@@ -18,6 +18,15 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const LOGOUT_USER = gql`
+  mutation LogoutUser($_id: ID!) {
+    logout(_id: $_id) {
+      token
+      loggedIn
+    }
+  }
+`;
+
 export const VERIFY_USER = gql`
   mutation VerifyUser($token: String!) {
     verifyUser(token: $token) {

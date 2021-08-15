@@ -25,6 +25,7 @@ const UserLoginForm = () => {
         query: IS_LOGGED_IN,
         data: {
           isLoggedIn: data.login.loggedIn,
+          userData: JSON.stringify(data.login),
         },
       });
     },
