@@ -7,7 +7,9 @@ import { IS_LOGGED_IN } from "../../graphql/queries";
 const LogoutButton = ({ userId }) => {
   const history = useHistory();
 
-  const [logoutFunction, { data, loading, error }] = useMutation(LOGOUT_USER, {
+  console.log(userId);
+
+  const [logoutFunction, { loading, error }] = useMutation(LOGOUT_USER, {
     variables: {
       _id: userId,
     },
@@ -17,8 +19,6 @@ const LogoutButton = ({ userId }) => {
       localStorage.setItem("user-data", JSON.stringify(data.logout));
     },
     update(cache, { data }) {
-      console.log(data);
-
       cache.writeQuery({
         query: IS_LOGGED_IN,
         data: {
@@ -28,6 +28,9 @@ const LogoutButton = ({ userId }) => {
       });
     },
   });
+
+  if (loading) return "Submitting...";
+  if (error) return `Submission error! ${error.message}`;
 
   return (
     <button

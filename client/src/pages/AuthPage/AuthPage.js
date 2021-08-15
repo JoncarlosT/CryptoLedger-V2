@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 import UserLoginForm from "../../components/UserLogin/UserLoginForm";
+import UserRegisterForm from "../../components/UserRegisterFrom/UserRegisterForm";
 
 const AuthPage = () => {
+  const [LoginFormRender, setLoginFormRender] = useState(true);
+
   return (
     <div>
-      <UserLoginForm />
+      {LoginFormRender ? <UserLoginForm /> : <UserRegisterForm />}
+      <div>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setLoginFormRender(!LoginFormRender);
+          }}
+        >
+          Register
+        </button>
+      </div>
     </div>
   );
 };

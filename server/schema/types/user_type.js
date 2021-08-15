@@ -17,9 +17,9 @@ const UserType = new GraphQLObjectType({
     name: { type: GraphQLString },
     email: { type: GraphQLString },
     cryptoWallet: {
-      type: new GraphQLList(CryptoCoinType),
-      resolve({ _id }) {
-        return User.findById(_id)
+      type: new GraphQLList(require("./cryptocoin_type")),
+      async resolve({ _id }) {
+        return await User.findById(_id)
           .populate("cryptoWallet")
           .then((user) => user.cryptoWallet);
       },

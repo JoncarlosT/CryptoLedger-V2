@@ -1,31 +1,33 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../graphql/mutations";
+import { REGISTER_USER } from "../../graphql/mutations";
 import { IS_LOGGED_IN } from "../../graphql/queries";
 
-const UserLoginForm = () => {
+const UserRegisterForm = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const history = useHistory();
 
-  const [loginFunction, { loading, error }] = useMutation(LOGIN_USER, {
+  const [registerFunction, { loading, error }] = useMutation(REGISTER_USER, {
     variables: {
+      name,
       email,
       password,
     },
     onCompleted: (data) => {
-      const { token } = data.login;
+      const { token } = data.register;
       localStorage.setItem("auth-token", token);
-      localStorage.setItem("user-data", JSON.stringify(data.login));
+      localStorage.setItem("user-data", JSON.stringify(data.register));
     },
     update(cache, { data }) {
       cache.writeQuery({
         query: IS_LOGGED_IN,
         data: {
-          isLoggedIn: data.login.loggedIn,
-          userData: JSON.stringify(data.login),
+          isLoggedIn: data.register.loggedIn,
+          userData: JSON.stringify(data.register),
         },
       });
     },
@@ -39,25 +41,30 @@ const UserLoginForm = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          loginFunction();
+          registerFunction();
           history.push("/coins");
         }}
       >
         <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="name"
+        />
+        <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="email"
         />
+
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          //   type="password"
-          placeholder="Password"
+          placeholder="password"
         />
-        <button type="submit">Log In</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default UserLoginForm;
+export default UserRegisterForm;
