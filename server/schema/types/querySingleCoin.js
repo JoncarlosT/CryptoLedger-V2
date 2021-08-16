@@ -12,6 +12,11 @@ const FetchSingleCoin = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (res) => res.description.en,
     },
+    image: {
+      type: GraphQLString,
+      resolve: (res) => res.image.small,
+    },
+    genesis_date: { type: GraphQLString },
   },
 });
 
