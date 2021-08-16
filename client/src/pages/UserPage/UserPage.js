@@ -14,7 +14,6 @@ const UserPage = ({ userData }) => {
   if (error) return <h1>{error}</h1>;
 
   const { user } = data;
-  console.log();
 
   return (
     <div>
