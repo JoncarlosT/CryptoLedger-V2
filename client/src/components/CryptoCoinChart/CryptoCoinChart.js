@@ -51,6 +51,9 @@ const CryptoCoinChart = ({ coinId, days, full }) => {
 
     scales: {
       x: {
+        grid: {
+          display: false,
+        },
         ticks: {
           maxTicksLimit: days,
         },
