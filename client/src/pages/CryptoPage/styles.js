@@ -1,16 +1,21 @@
 import styled from "styled-components";
+import Select from "react-select";
 
 export const StyledCryptoPage = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 `;
 
-export const CoinDetailWrapper = styled.div`
-  width: 25%;
+export const CoinWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
 `;
 
 export const ChartWrapper = styled.div`
-  width: 60%;
+  width: 900px;
 `;
+
+export const ChartSelector = styled(Select)``;
+
+export const CoinDetailWrapper = styled.div``;
