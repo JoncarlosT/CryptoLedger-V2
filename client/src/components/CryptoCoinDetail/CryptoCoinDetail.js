@@ -28,7 +28,6 @@ const CryptoCoinDetail = ({ coinId }) => {
   if (error) return <h1>{error}</h1>;
 
   const { fetchSingleCoin } = data;
-  console.log(fetchSingleCoin);
   return (
     <StyledCryptoCoinDetail>
       <CoinHeaderWrapper>
@@ -38,28 +37,14 @@ const CryptoCoinDetail = ({ coinId }) => {
       </CoinHeaderWrapper>
       <FinancialWrapper>
         <div>
-          <h2>Current Price: ${coinFormat(fetchSingleCoin.current_price)}</h2>
-        </div>
-        <div>
           <h2>Market Cap: ${coinFormat(fetchSingleCoin.market_cap)}</h2>
         </div>
         <div>
-          <h2>Total Supply: {coinFormat(fetchSingleCoin.total_supply)}</h2>
+          <h2>Current Price: ${coinFormat(fetchSingleCoin.current_price)}</h2>
         </div>
-      </FinancialWrapper>
-      <ExtraData>
-        <div>
-          <h2>Genesis Date: {fetchSingleCoin.genesis_date}</h2>
-        </div>
-        <div>
-          <h2>Hashing Algorithm: {fetchSingleCoin.hashing_algorithm}</h2>
-        </div>
-        <div>
-          <p>Description: {fetchSingleCoin.description}</p>
-        </div>
-      </ExtraData>
 
-      {/* <p>{fetchSingleCoin.description}</p> */}
+        <button>ADD COIN</button>
+      </FinancialWrapper>
     </StyledCryptoCoinDetail>
   );
 };

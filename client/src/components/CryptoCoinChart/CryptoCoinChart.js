@@ -3,6 +3,7 @@ import moment from "moment";
 import { useQuery } from "@apollo/client";
 import { Line } from "react-chartjs-2";
 import { FETCH_COIN_CHART_HISTORY } from "../../graphql/queries";
+import { LineWrapper } from "./styles";
 
 const CryptoCoinChart = ({ coinId, days, full }) => {
   const { loading, data, error } = useQuery(FETCH_COIN_CHART_HISTORY, {
