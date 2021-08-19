@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import Select from "react-select";
 import CryptoCoinDetail from "../../components/CryptoCoinDetail/CryptoCoinDetail";
 import CryptoCoinChart from "../../components/CryptoCoinChart/CryptoCoinChart";
-import { StyledCryptoPage, ChartWrapper } from "./styles";
+import CryptoCoinExtraDetail from "../../components/CryptoCoinExtraDetail/CryptoCoinExtraDetail";
+import {
+  StyledCryptoPage,
+  CoinWrapper,
+  CoinDetailWrapper,
+  ChartSelector,
+  ChartWrapper,
+} from "./styles";
 
 const CryptoPage = (props) => {
   const [days, setDays] = useState(7);
@@ -20,18 +26,23 @@ const CryptoPage = (props) => {
 
   return (
     <StyledCryptoPage>
-      <ChartWrapper>
-        <Select
-          defaultValue={days[1]}
-          options={daysOption}
-          placeholder="7 Days"
-          onChange={(e) => {
-            setDays(e.value);
-          }}
-        />
-        <CryptoCoinChart coinId={coinId} days={days} full={true} />
-      </ChartWrapper>
-      <CryptoCoinDetail coinId={coinId} />
+      <CoinWrapper>
+        <CryptoCoinDetail coinId={coinId} />
+        <ChartWrapper>
+          <ChartSelector
+            defaultValue={days[1]}
+            options={daysOption}
+            placeholder="7 Days"
+            onChange={(e) => {
+              setDays(e.value);
+            }}
+          />
+          <CryptoCoinChart coinId={coinId} days={days} full={true} />
+        </ChartWrapper>
+      </CoinWrapper>
+      <CoinDetailWrapper>
+        <CryptoCoinExtraDetail coinId={coinId} />
+      </CoinDetailWrapper>
     </StyledCryptoPage>
   );
 };

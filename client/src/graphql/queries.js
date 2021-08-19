@@ -32,6 +32,10 @@ export const FETCH_SINGLE_COIN = gql`
       description
       image
       genesis_date
+      current_price
+      market_cap
+      total_volume
+      total_supply
     }
   }
 `;
