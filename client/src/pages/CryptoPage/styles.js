@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Select from "react-select";
 
 export const StyledCryptoPage = styled.div`
   display: flex;
@@ -15,7 +14,5 @@ export const CoinWrapper = styled.div`
 export const ChartWrapper = styled.div`
   width: 900px;
 `;
-
-export const ChartSelector = styled(Select)``;
 
 export const CoinDetailWrapper = styled.div``;
