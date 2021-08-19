@@ -1,6 +1,7 @@
 import React from "react";
 import CryptoCoinChart from "../CryptoCoinChart/CryptoCoinChart";
 import { useQuery } from "@apollo/client";
+import coinFormat from "../../util/coinFormat";
 import { FETCH_COINS } from "../../graphql/queries";
 import {
   ChartRow,
@@ -11,12 +12,6 @@ import {
 } from "./styles";
 
 const CryptoCoinIndex = () => {
-  const coinFormat = (num) => {
-    return num >= 100
-      ? num.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,")
-      : num;
-  };
-
   const { loading, data, error } = useQuery(FETCH_COINS, {
     variables: {
       num: 10,

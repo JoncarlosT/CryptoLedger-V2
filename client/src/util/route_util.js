@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "../graphql/queries";
 
 const AuthUserRoute = ({ component: Component, path, routeType, ...rest }) => {
-  const { data, loading, error } = useQuery(IS_LOGGED_IN);
+  const { data } = useQuery(IS_LOGGED_IN);
 
   if (routeType === "auth") {
     return (
