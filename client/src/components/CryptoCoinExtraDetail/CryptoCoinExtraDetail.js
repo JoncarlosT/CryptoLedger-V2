@@ -25,7 +25,7 @@ const CryptoCoinExtraDetail = ({ coinId }) => {
   if (error) return <h1>{error}</h1>;
 
   const { fetchSingleCoin } = data;
-  console.log(fetchSingleCoin);
+
   return (
     <StyledCryptoCoinExtraDetail>
       <UpperRow>

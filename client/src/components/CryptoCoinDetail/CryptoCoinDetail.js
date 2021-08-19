@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { FETCH_SINGLE_COIN } from "../../graphql/queries";
+import AddCoinMenu from "../AddCoinMenu/AddCoinMenu";
+import { FETCH_SINGLE_COIN, IS_LOGGED_IN } from "../../graphql/queries";
 import {
   StyledCryptoCoinDetail,
   CoinHeaderWrapper,
@@ -12,11 +13,15 @@ import {
 } from "./styles";
 
 const CryptoCoinDetail = ({ coinId }) => {
+  const [ShowCoinMenu, setShowCoinMenu] = useState(false);
+
   const coinFormat = (num) => {
     return num >= 100
       ? num.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,")
       : num;
   };
+
+  const loggedInData = useQuery(IS_LOGGED_IN);
 
   const { loading, data, error } = useQuery(FETCH_SINGLE_COIN, {
     variables: {
@@ -28,6 +33,7 @@ const CryptoCoinDetail = ({ coinId }) => {
   if (error) return <h1>{error}</h1>;
 
   const { fetchSingleCoin } = data;
+
   return (
     <StyledCryptoCoinDetail>
       <CoinHeaderWrapper>
@@ -42,8 +48,22 @@ const CryptoCoinDetail = ({ coinId }) => {
         <div>
           <h2>Current Price: ${coinFormat(fetchSingleCoin.current_price)}</h2>
         </div>
-
-        <button>ADD COIN</button>
+        {loggedInData.data.isLoggedIn ? (
+          ShowCoinMenu ? (
+            <AddCoinMenu
+              coinData={fetchSingleCoin}
+              userData={JSON.parse(loggedInData.data.userData)}
+            />
+          ) : (
+            <div>
+              <button onClick={() => setShowCoinMenu(!ShowCoinMenu)}>
+                Add Coin
+              </button>
+            </div>
+          )
+        ) : (
+          <div>Log in to add </div>
+        )}
       </FinancialWrapper>
     </StyledCryptoCoinDetail>
   );

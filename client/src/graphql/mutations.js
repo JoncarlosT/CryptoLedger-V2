@@ -47,3 +47,24 @@ export const VERIFY_USER = gql`
     }
   }
 `;
+
+export const ADD_COIN_TO_USER_WALLET = gql`
+  mutation AddCoinToUserWallet(
+    $userId: ID!
+    $name: String!
+    $amount: Int!
+    $buyPrice: Int!
+    $cryptoImage: String!
+  ) {
+    addCoinToUserWallet(
+      userId: $userId
+      name: $name
+      amount: $amount
+      buyPrice: $buyPrice
+      cryptoImage: $cryptoImage
+    ) {
+      _id
+      name
+    }
+  }
+`;
