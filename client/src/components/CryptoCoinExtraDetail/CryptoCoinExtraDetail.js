@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { FETCH_SINGLE_COIN } from "../../graphql/queries";
+import coinFormat from "../../util/coinFormat";
 import {
   StyledCryptoCoinExtraDetail,
   UpperRow,
@@ -9,12 +10,6 @@ import {
 } from "./styles";
 
 const CryptoCoinExtraDetail = ({ coinId }) => {
-  const coinFormat = (num) => {
-    return num >= 100
-      ? num.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,")
-      : num;
-  };
-
   const { loading, data, error } = useQuery(FETCH_SINGLE_COIN, {
     variables: {
       coinId: coinId,
@@ -31,18 +26,46 @@ const CryptoCoinExtraDetail = ({ coinId }) => {
       <UpperRow>
         <div>
           <UpperSection>
-            <h1>Total Volume: {coinFormat(fetchSingleCoin.total_volume)}</h1>
+            <h1>
+              Total Volume: $
+              {fetchSingleCoin.total_volume === null ? (
+                <>N/A</>
+              ) : (
+                coinFormat(fetchSingleCoin.total_volume)
+              )}
+            </h1>
           </UpperSection>
           <UpperSection>
-            <h1>Total Supply: {coinFormat(fetchSingleCoin.total_supply)}</h1>
+            <h1>
+              Total Supply:
+              {fetchSingleCoin.total_supply === null ? (
+                <> N/A</>
+              ) : (
+                coinFormat(fetchSingleCoin.total_supply)
+              )}
+            </h1>
           </UpperSection>
         </div>
         <div>
           <UpperSection>
-            <h1>Genesis Date: {fetchSingleCoin.genesis_date}</h1>
+            <h1>
+              Genesis Date:
+              {fetchSingleCoin.genesis_date === null ? (
+                <> N/A</>
+              ) : (
+                coinFormat(fetchSingleCoin.genesis_date)
+              )}
+            </h1>
           </UpperSection>
           <UpperSection>
-            <h1>Hashing Algorithm: {fetchSingleCoin.hashing_algorithm}</h1>
+            <h1>
+              Hashing Algorithm:
+              {fetchSingleCoin.hashing_algorithm === null ? (
+                <> N/A</>
+              ) : (
+                coinFormat(fetchSingleCoin.hashing_algorithm)
+              )}
+            </h1>
           </UpperSection>
         </div>
       </UpperRow>
@@ -51,7 +74,11 @@ const CryptoCoinExtraDetail = ({ coinId }) => {
         <div>
           <h1>Description:</h1>
 
-          {fetchSingleCoin.description}
+          {fetchSingleCoin.description === "" ? (
+            <> N/A</>
+          ) : (
+            <p>{fetchSingleCoin.description}</p>
+          )}
         </div>
       </LowerSection>
     </StyledCryptoCoinExtraDetail>
