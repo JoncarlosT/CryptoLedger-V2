@@ -68,3 +68,18 @@ export const ADD_COIN_TO_USER_WALLET = gql`
     }
   }
 `;
+
+export const REMOVE_COIN = gql`
+  mutation RemoveCoin($userId: ID!, $coinId: ID!) {
+    removeCoin(userId: $userId, coinId: $coinId) {
+      _id
+      name
+      email
+      token
+      loggedIn
+      cryptoWallet {
+        name
+      }
+    }
+  }
+`;
