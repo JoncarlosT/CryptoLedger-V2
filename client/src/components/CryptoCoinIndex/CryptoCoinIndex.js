@@ -44,12 +44,16 @@ const CryptoCoinIndex = () => {
                   <div>{coin.symbol}</div>
                 </CoinDetail>
               </ChartBox>
-
               <ChartBox>${coinFormat(coin.current_price)}</ChartBox>
               <ChartBox>${coinFormat(coin.total_volume)}</ChartBox>
               <ChartBox>${coinFormat(coin.market_cap)}</ChartBox>
               <ChartBox>
-                <CryptoCoinChart coinId={coin.id} days={7} />
+                <CryptoCoinChart
+                  coinId={coin.id}
+                  days={7}
+                  height={250}
+                  width={650}
+                />
               </ChartBox>
             </ChartRow>
           </CoinDetailLink>

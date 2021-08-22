@@ -3,7 +3,12 @@ import { useQuery } from "@apollo/client";
 import CryptoCoinChart from "../../components/CryptoCoinChart/CryptoCoinChart";
 import EditCoinMenu from "../../components/EditCoinMenu/EditCoinMenu";
 import { FETCH_SINGLE_USER } from "../../graphql/queries";
-import { StyledUserPage, UserCryptoChart, ChartWrapper } from "./styles";
+import {
+  StyledUserPage,
+  UserCryptoChart,
+  ChartWrapper,
+  EditCoinMenuWrapper,
+} from "./styles";
 
 const UserPage = ({ userData }) => {
   const { data, loading, error } = useQuery(FETCH_SINGLE_USER, {
@@ -27,9 +32,16 @@ const UserPage = ({ userData }) => {
         user.cryptoWallet.map((coin, idx) => {
           return (
             <UserCryptoChart key={idx}>
-              <EditCoinMenu userCoin={coin} />
+              <EditCoinMenuWrapper>
+                <EditCoinMenu userCoin={coin} />
+              </EditCoinMenuWrapper>
               <ChartWrapper>
-                <CryptoCoinChart coinId={coin.name} full={true} />
+                <CryptoCoinChart
+                  coinId={coin.name}
+                  full={true}
+                  height={400}
+                  width={850}
+                />
               </ChartWrapper>
             </UserCryptoChart>
           );
