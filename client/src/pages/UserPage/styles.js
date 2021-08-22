@@ -10,7 +10,12 @@ export const UserCryptoChart = styled.div`
   display: flex;
   flex-direction: row;
   width: 75%;
-  background-color: red;
 `;
 
-export const ChartWrapper = styled.div``;
+export const EditCoinMenuWrapper = styled.div`
+  width: 400px;
+`;
+
+export const ChartWrapper = styled.div`
+  height: 500px;
+`;

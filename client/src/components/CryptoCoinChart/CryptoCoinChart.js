@@ -5,7 +5,7 @@ import { Line } from "react-chartjs-2";
 import { FETCH_COIN_CHART_HISTORY } from "../../graphql/queries";
 import { ChartSelector } from "./styles";
 
-const CryptoCoinChart = ({ coinId, full }) => {
+const CryptoCoinChart = ({ coinId, full, width, height }) => {
   const [days, setDays] = useState(7);
 
   const daysOption = [
@@ -91,8 +91,8 @@ const CryptoCoinChart = ({ coinId, full }) => {
       <Line
         data={chartData}
         options={full ? fullChartOptions : miniChartOptions}
-        height={250}
-        width={650}
+        height={height}
+        width={width}
       />
     </>
   );
