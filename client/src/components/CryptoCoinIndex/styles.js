@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 
 export const ChartRow = styled.div`
   display: flex;
@@ -36,4 +37,12 @@ export const CoinDetailLink = styled(Link)`
 
 export const CoinIcon = styled.img`
   width: 40px;
+`;
+
+export const Footer = styled.div`
+  margin: 50px;
+`;
+
+export const PageNumSelector = styled(Select)`
+  width: 180px;
 `;
