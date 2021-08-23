@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import CryptoCoinChart from "../CryptoCoinChart/CryptoCoinChart";
 import { useQuery } from "@apollo/client";
+import coinFormat from "../../util/coinFormat";
 import { FETCH_COINS } from "../../graphql/queries";
 import {
   ChartRow,
@@ -8,18 +9,25 @@ import {
   CoinDetail,
   CoinDetailLink,
   CoinIcon,
+  Footer,
+  PageNumSelector,
 } from "./styles";
 
 const CryptoCoinIndex = () => {
-  const coinFormat = (num) => {
-    return num >= 100
-      ? num.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,")
-      : num;
-  };
+  const [numOfCoins, setNumOfCoins] = useState(10);
+  const [pageNum, setPageNum] = useState(1);
+
+  const NumOfCoinsOptions = [
+    { value: 5, label: "5 Coins" },
+    { value: 10, label: "10 Coins" },
+    { value: 20, label: "20 Coins" },
+    { value: 50, label: "50 Coins" },
+  ];
 
   const { loading, data, error } = useQuery(FETCH_COINS, {
     variables: {
-      num: 10,
+      numOfCoins,
+      pageNum,
     },
   });
 
@@ -49,17 +57,51 @@ const CryptoCoinIndex = () => {
                   <div>{coin.symbol}</div>
                 </CoinDetail>
               </ChartBox>
-
               <ChartBox>${coinFormat(coin.current_price)}</ChartBox>
               <ChartBox>${coinFormat(coin.total_volume)}</ChartBox>
               <ChartBox>${coinFormat(coin.market_cap)}</ChartBox>
               <ChartBox>
-                <CryptoCoinChart coinId={coin.id} days={7} />
+                <CryptoCoinChart
+                  coinId={coin.id}
+                  days={7}
+                  height={250}
+                  width={650}
+                />
               </ChartBox>
             </ChartRow>
           </CoinDetailLink>
         );
       })}
+
+      <Footer>
+        Number of Coins
+        <PageNumSelector
+          options={NumOfCoinsOptions}
+          onChange={(e) => {
+            setNumOfCoins(e.value);
+          }}
+        />
+        <div>
+          <button
+            onClick={(e) => {
+              if (pageNum === 1) {
+              } else {
+                setPageNum(pageNum - 1);
+              }
+            }}
+          >
+            Left
+          </button>
+          {pageNum}
+          <button
+            onClick={(e) => {
+              setPageNum(pageNum + 1);
+            }}
+          >
+            Right
+          </button>
+        </div>
+      </Footer>
     </>
   );
 };

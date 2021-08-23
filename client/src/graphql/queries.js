@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_COINS = gql`
-  query FetchCoins($num: Int!) {
-    fetchCoins(numOfCoins: $num) {
+  query FetchCoins($numOfCoins: Int!, $pageNum: Int!) {
+    fetchCoins(numOfCoins: $numOfCoins, pageNum: $pageNum) {
       id
       name
       symbol

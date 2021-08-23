@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import AddCoinMenu from "../AddCoinMenu/AddCoinMenu";
+import coinFormat from "../../util/coinFormat";
 import { FETCH_SINGLE_COIN, IS_LOGGED_IN } from "../../graphql/queries";
 import {
   StyledCryptoCoinDetail,
@@ -14,12 +15,6 @@ import {
 
 const CryptoCoinDetail = ({ coinId }) => {
   const [ShowCoinMenu, setShowCoinMenu] = useState(false);
-
-  const coinFormat = (num) => {
-    return num >= 100
-      ? num.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,")
-      : num;
-  };
 
   const loggedInData = useQuery(IS_LOGGED_IN);
 

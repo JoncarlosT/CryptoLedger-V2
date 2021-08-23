@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { useQuery } from "@apollo/client";
 import { Line } from "react-chartjs-2";
 import { FETCH_COIN_CHART_HISTORY } from "../../graphql/queries";
-import { LineWrapper } from "./styles";
+import { ChartSelector } from "./styles";
 
-const CryptoCoinChart = ({ coinId, days, full }) => {
+const CryptoCoinChart = ({ coinId, full, width, height }) => {
+  const [days, setDays] = useState(7);
+
+  const daysOption = [
+    { value: 1, label: "1 Day" },
+    { value: 5, label: "5 Days" },
+    { value: 7, label: "7 Days" },
+    { value: 10, label: "10 Days" },
+    { value: 15, label: "15 Days" },
+    { value: 30, label: "30 Days" },
+  ];
+
   const { loading, data, error } = useQuery(FETCH_COIN_CHART_HISTORY, {
     variables: {
       coin: coinId,
@@ -63,12 +74,27 @@ const CryptoCoinChart = ({ coinId, days, full }) => {
   };
 
   return (
-    <Line
-      data={chartData}
-      options={full ? fullChartOptions : miniChartOptions}
-      height={250}
-      width={650}
-    />
+    <>
+      {full ? (
+        <ChartSelector
+          defaultValue={days[1]}
+          options={daysOption}
+          placeholder="7 Days"
+          onChange={(e) => {
+            setDays(e.value);
+          }}
+        />
+      ) : (
+        <></>
+      )}
+
+      <Line
+        data={chartData}
+        options={full ? fullChartOptions : miniChartOptions}
+        height={height}
+        width={width}
+      />
+    </>
   );
 };
 
