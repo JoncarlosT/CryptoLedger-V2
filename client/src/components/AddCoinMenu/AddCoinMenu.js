@@ -12,7 +12,7 @@ const AddCoinMenu = ({ coinData, userData }) => {
         userId: userData._id,
         name: coinData.id,
         amount: amount,
-        buyPrice: parseInt(coinData.current_price),
+        buyPrice: parseFloat(coinData.current_price),
         cryptoImage: coinData.image,
       },
     }

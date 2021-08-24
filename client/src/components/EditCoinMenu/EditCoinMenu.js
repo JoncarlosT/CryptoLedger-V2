@@ -12,6 +12,18 @@ import {
 } from "./styles";
 
 const EditCoinMenu = ({ userCoin }) => {
+  const percentChange = (originalPrice, currentPrice) => {
+    return (
+      (Math.ceil(((originalPrice - currentPrice) / originalPrice) * 100 * 100) /
+        100) *
+      -1
+    );
+  };
+
+  const totalReturn = (total, percentChange) => {
+    return Math.ceil(total * (percentChange / 100));
+  };
+
   const { data, loading, error } = useQuery(FETCH_SINGLE_COIN, {
     variables: {
       coinId: userCoin.name,
@@ -23,6 +35,8 @@ const EditCoinMenu = ({ userCoin }) => {
 
   const { fetchSingleCoin } = data;
 
+  console.log(fetchSingleCoin);
+
   return (
     <StyledEditCoinMenu>
       <CoinHeaderWrapper>
@@ -33,10 +47,18 @@ const EditCoinMenu = ({ userCoin }) => {
       </CoinHeaderWrapper>
       <h1>Quantity: {coinFormat(userCoin.amount)}</h1>
       <h1>Average Cost: {coinFormat(userCoin.buyPrice)}</h1>
+
       <h1>
         Equlity: {coinFormat(userCoin.amount * fetchSingleCoin.current_price)}
       </h1>
-      <h1>Total return: Math</h1>
+      <h1>
+        Return:
+        {totalReturn(
+          userCoin.amount * userCoin.buyPrice,
+          percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)
+        )}
+        ({percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)}%)
+      </h1>
     </StyledEditCoinMenu>
   );
 };
