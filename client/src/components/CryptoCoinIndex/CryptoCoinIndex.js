@@ -21,7 +21,6 @@ const CryptoCoinIndex = () => {
     { value: 5, label: "5 Coins" },
     { value: 10, label: "10 Coins" },
     { value: 20, label: "20 Coins" },
-    { value: 50, label: "50 Coins" },
   ];
 
   const { loading, data, error } = useQuery(FETCH_COINS, {
