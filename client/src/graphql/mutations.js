@@ -52,8 +52,8 @@ export const ADD_COIN_TO_USER_WALLET = gql`
   mutation AddCoinToUserWallet(
     $userId: ID!
     $name: String!
-    $amount: Int!
-    $buyPrice: Int!
+    $amount: Float!
+    $buyPrice: Float!
     $cryptoImage: String!
   ) {
     addCoinToUserWallet(

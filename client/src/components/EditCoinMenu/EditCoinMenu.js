@@ -31,8 +31,8 @@ const EditCoinMenu = ({ userCoin }) => {
         <CoinSymbol>{fetchSingleCoin.symbol}</CoinSymbol>
         <RemoveCoinButton coinData={userCoin} />
       </CoinHeaderWrapper>
-      <h1>Quantity: {userCoin.amount}</h1>
-      <h1>Average Cost: {userCoin.buyPrice}</h1>
+      <h1>Quantity: {coinFormat(userCoin.amount)}</h1>
+      <h1>Average Cost: {coinFormat(userCoin.buyPrice)}</h1>
       <h1>
         Equlity: {coinFormat(userCoin.amount * fetchSingleCoin.current_price)}
       </h1>
