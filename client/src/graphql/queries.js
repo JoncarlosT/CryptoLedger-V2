@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_COINS = gql`
-  query FetchCoins($numOfCoins: Int!, $pageNum: Int!) {
+  query FetchCoins($numOfCoins: Float!, $pageNum: Float!) {
     fetchCoins(numOfCoins: $numOfCoins, pageNum: $pageNum) {
       id
       name
@@ -15,7 +15,7 @@ export const FETCH_COINS = gql`
 `;
 
 export const FETCH_COIN_CHART_HISTORY = gql`
-  query FetchCoinChartHistory($coin: ID!, $days: Int!) {
+  query FetchCoinChartHistory($coin: ID!, $days: Float!) {
     fetchCoinChartHistory(coin: $coin, days: $days) {
       prices
     }

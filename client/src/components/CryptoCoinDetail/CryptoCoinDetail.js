@@ -7,7 +7,6 @@ import {
   StyledCryptoCoinDetail,
   CoinHeaderWrapper,
   FinancialWrapper,
-  ExtraData,
   CoinImage,
   CoinName,
   CoinSymbol,

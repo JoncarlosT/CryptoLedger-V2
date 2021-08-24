@@ -6,6 +6,7 @@ const {
   GraphQLID,
   GraphQLList,
   GraphQLBoolean,
+  GraphQLFloat,
 } = graphql;
 const User = mongoose.model("user");
 

@@ -6,6 +6,7 @@ const {
   GraphQLInt,
   GraphQLID,
   GraphQLNonNull,
+  GraphQLFloat,
 } = graphql;
 const AuthService = require("../services/auth");
 
@@ -35,29 +36,28 @@ const mutation = new GraphQLObjectType({
       args: {
         userId: { type: new GraphQLNonNull(GraphQLID) },
         name: { type: new GraphQLNonNull(GraphQLString) },
-        amount: { type: new GraphQLNonNull(GraphQLInt) },
-        buyPrice: { type: new GraphQLNonNull(GraphQLInt) },
+        amount: { type: new GraphQLNonNull(GraphQLFloat) },
+        buyPrice: { type: new GraphQLNonNull(GraphQLFloat) },
         cryptoImage: { type: new GraphQLNonNull(GraphQLString) },
       },
       async resolve(_, { userId, name, amount, buyPrice, cryptoImage }) {
         const currentUserWallet = await User.findById(userId)
           .populate("cryptoWallet")
-          .then((user) => user.cryptoWallet);
+          .then((user) => user.cryptoWallet)
+          .then((coin) => coin.map((el) => el.name));
 
-        currentUserWallet.forEach((coin) => {
-          if (coin.name === name) {
-            throw new Error("Sorry you already have that coin");
-          }
-        });
+        if (currentUserWallet.includes(name)) {
+          return CryptoCoin.updateCoinInWallet(userId, name, amount, buyPrice);
+        } else {
+          const newCoin = await new CryptoCoin({
+            name,
+            amount,
+            buyPrice,
+            cryptoImage,
+          }).save();
 
-        const newCoin = await new CryptoCoin({
-          name,
-          amount,
-          buyPrice,
-          cryptoImage,
-        }).save();
-
-        return User.addCoinToWallet(userId, newCoin._id);
+          return User.addCoinToWallet(userId, newCoin._id);
+        }
       },
     },
 
@@ -65,8 +65,8 @@ const mutation = new GraphQLObjectType({
       type: CryptoCoinType,
       args: {
         _id: { type: new GraphQLNonNull(GraphQLID) },
-        amount: { type: new GraphQLNonNull(GraphQLInt) },
-        buyPrice: { type: new GraphQLNonNull(GraphQLInt) },
+        amount: { type: new GraphQLNonNull(GraphQLFloat) },
+        buyPrice: { type: new GraphQLNonNull(GraphQLFloat) },
       },
       resolve(_, { _id, amount, buyPrice }) {
         return CryptoCoin.findByIdAndUpdate(

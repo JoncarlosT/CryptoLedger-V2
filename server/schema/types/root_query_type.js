@@ -6,6 +6,7 @@ const {
   GraphQLID,
   GraphQLNonNull,
   GraphQLInt,
+  GraphQLFloat,
   GraphQLString,
 } = graphql;
 const fetch = require("node-fetch");
@@ -48,8 +49,8 @@ const RootQueryType = new GraphQLObjectType({
     fetchCoins: {
       type: new GraphQLList(FetchCoinsType),
       args: {
-        numOfCoins: { type: new GraphQLNonNull(GraphQLInt) },
-        pageNum: { type: new GraphQLNonNull(GraphQLInt) },
+        numOfCoins: { type: new GraphQLNonNull(GraphQLFloat) },
+        pageNum: { type: new GraphQLNonNull(GraphQLFloat) },
       },
       async resolve(_, { numOfCoins, pageNum }) {
         const response = await fetch(
@@ -78,7 +79,7 @@ const RootQueryType = new GraphQLObjectType({
       type: FetchCoinChartHistory,
       args: {
         coin: { type: new GraphQLNonNull(GraphQLID) },
-        days: { type: new GraphQLNonNull(GraphQLInt) },
+        days: { type: new GraphQLNonNull(GraphQLFloat) },
       },
       async resolve(_, { coin, days }) {
         const response = await fetch(

@@ -4,16 +4,15 @@ import { ADD_COIN_TO_USER_WALLET } from "../../graphql/mutations";
 
 const AddCoinMenu = ({ coinData, userData }) => {
   const [amount, setAmount] = useState(undefined);
-  const [buyPrice, setBuyPrice] = useState(undefined);
 
-  const [addCoinToUserWallet, addCoinToUserWalletData] = useMutation(
+  const [addCoinToUserWallet, { called }] = useMutation(
     ADD_COIN_TO_USER_WALLET,
     {
       variables: {
         userId: userData._id,
         name: coinData.id,
         amount: amount,
-        buyPrice: buyPrice,
+        buyPrice: parseInt(coinData.current_price),
         cryptoImage: coinData.image,
       },
     }
@@ -27,13 +26,10 @@ const AddCoinMenu = ({ coinData, userData }) => {
         type="number"
         placeholder="Amount"
       />
-      <input
-        value={buyPrice}
-        onChange={(e) => setBuyPrice(parseInt(e.target.value))}
-        type="number"
-        placeholder="BuyPrice"
-      />
+
       <button onClick={() => addCoinToUserWallet()}>Add Coin</button>
+
+      {called ? <h1>Added</h1> : <></>}
     </div>
   );
 };
