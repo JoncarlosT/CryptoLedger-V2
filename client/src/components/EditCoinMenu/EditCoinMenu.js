@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { FETCH_SINGLE_COIN } from "../../graphql/queries";
 import coinFormat from "../../util/coinFormat";
 import RemoveCoinButton from "../RemoveCoinButton/RemoveCoinButton";
+import SellCoinButton from "../SellCoinButton/SellCoinButton";
 import {
   StyledEditCoinMenu,
   CoinHeaderWrapper,
@@ -12,6 +13,8 @@ import {
 } from "./styles";
 
 const EditCoinMenu = ({ userCoin }) => {
+  const [sellCoin, setSellCoin] = useState(false);
+
   const percentChange = (originalPrice, currentPrice) => {
     return (
       (Math.ceil(((originalPrice - currentPrice) / originalPrice) * 100 * 100) /
@@ -43,7 +46,18 @@ const EditCoinMenu = ({ userCoin }) => {
         <CoinSymbol>{fetchSingleCoin.symbol}</CoinSymbol>
         <RemoveCoinButton coinData={userCoin} />
       </CoinHeaderWrapper>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setSellCoin(!sellCoin);
+        }}
+      >
+        {sellCoin ? <>Cancel</> : <>Sell</>}
+      </button>
+
       <h1>Quantity: {coinFormat(userCoin.amount)}</h1>
+      {sellCoin ? <SellCoinButton coin={userCoin} /> : <></>}
+
       <h1>Average Cost: {coinFormat(userCoin.buyPrice)}</h1>
 
       <h1>
