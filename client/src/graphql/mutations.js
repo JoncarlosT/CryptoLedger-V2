@@ -83,3 +83,14 @@ export const REMOVE_COIN = gql`
     }
   }
 `;
+
+export const SELL_COIN = gql`
+  mutation SellCoin($coinId: ID!, $amount: Float!) {
+    sellCoin(coinId: $coinId, amount: $amount) {
+      _id
+      name
+      amount
+      buyPrice
+    }
+  }
+`;

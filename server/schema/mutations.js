@@ -61,17 +61,16 @@ const mutation = new GraphQLObjectType({
       },
     },
 
-    updateCoin: {
+    sellCoin: {
       type: CryptoCoinType,
       args: {
-        _id: { type: new GraphQLNonNull(GraphQLID) },
+        coinId: { type: new GraphQLNonNull(GraphQLID) },
         amount: { type: new GraphQLNonNull(GraphQLFloat) },
-        buyPrice: { type: new GraphQLNonNull(GraphQLFloat) },
       },
-      resolve(_, { _id, amount, buyPrice }) {
+      resolve(_, { coinId, amount }) {
         return CryptoCoin.findByIdAndUpdate(
-          { _id: _id },
-          { $set: { amount, buyPrice } },
+          { _id: coinId },
+          { $set: { amount } },
           { new: true },
           (err, coin) => {
             return coin;
