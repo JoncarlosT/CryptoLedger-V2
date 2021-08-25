@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { useQuery } from "@apollo/client";
+import Loading from "../../util/Loading";
 import { Line } from "react-chartjs-2";
 import { FETCH_COIN_CHART_HISTORY } from "../../graphql/queries";
 import { ChartSelector } from "./styles";
@@ -24,7 +25,12 @@ const CryptoCoinChart = ({ coinId, full, width, height }) => {
     },
   });
 
-  if (loading) return <h1>chartLoading</h1>;
+  if (loading)
+    return (
+      <div>
+        <Loading height={100} width={100} />
+      </div>
+    );
   if (error) return <h1>{error}</h1>;
 
   const { prices } = data.fetchCoinChartHistory;
