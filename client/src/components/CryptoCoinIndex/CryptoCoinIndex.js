@@ -30,7 +30,7 @@ const CryptoCoinIndex = () => {
     },
   });
 
-  if (loading) return <h1>Loading</h1>;
+  if (loading) return <div>Welcome To CryptoLedger</div>;
   if (error) return <h1>{error}</h1>;
 
   const { fetchCoins } = data;
