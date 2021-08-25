@@ -35,8 +35,6 @@ const EditCoinMenu = ({ userCoin }) => {
 
   const { fetchSingleCoin } = data;
 
-  console.log(fetchSingleCoin);
-
   return (
     <StyledEditCoinMenu>
       <CoinHeaderWrapper>
@@ -49,10 +47,14 @@ const EditCoinMenu = ({ userCoin }) => {
       <h1>Average Cost: {coinFormat(userCoin.buyPrice)}</h1>
 
       <h1>
-        Equlity: {coinFormat(userCoin.amount * fetchSingleCoin.current_price)}
+        Equlity: $
+        {coinFormat(
+          Math.round(100 * userCoin.amount * fetchSingleCoin.current_price) /
+            100
+        )}
       </h1>
       <h1>
-        Return:
+        Return: $
         {totalReturn(
           userCoin.amount * userCoin.buyPrice,
           percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)
