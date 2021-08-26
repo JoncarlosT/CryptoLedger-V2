@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import coinData from "../../data/coin_storage.json";
 import { createFilter } from "react-select";
 import { Link } from "react-router-dom/";
-import { StyledNavbar, Logo, SearchBar } from "./styles";
+import Logo from "../../assets/CL_Logo.png";
+import { StyledNavbar, LogoLink, SearchBar, LogoImage } from "./styles";
 import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "../../graphql/queries";
 import LogoutButton from "../LogoutButton/LogoutButton";
@@ -20,7 +21,9 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <Logo to="/coins">Home</Logo>
+      <LogoLink to="/coins">
+        <LogoImage src={Logo} alt="Logo" />
+      </LogoLink>
       <SearchBar
         filterOption={createFilter({ ignoreAccents: false })}
         options={coinData}
