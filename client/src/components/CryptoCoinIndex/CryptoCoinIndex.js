@@ -12,6 +12,8 @@ import {
   CoinIcon,
   Footer,
   PageNumSelector,
+  NumberOfCoinsWrapper,
+  NavigatorWrapper,
 } from "./styles";
 
 const CryptoCoinIndex = () => {
@@ -74,14 +76,7 @@ const CryptoCoinIndex = () => {
       })}
 
       <Footer>
-        Number of Coins
-        <PageNumSelector
-          options={NumOfCoinsOptions}
-          onChange={(e) => {
-            setNumOfCoins(e.value);
-          }}
-        />
-        <div>
+        <NavigatorWrapper>
           <button
             onClick={(e) => {
               if (pageNum === 1) {
@@ -90,7 +85,7 @@ const CryptoCoinIndex = () => {
               }
             }}
           >
-            Left
+            Back
           </button>
           {pageNum}
           <button
@@ -98,9 +93,19 @@ const CryptoCoinIndex = () => {
               setPageNum(pageNum + 1);
             }}
           >
-            Right
+            Front
           </button>
-        </div>
+        </NavigatorWrapper>
+
+        <NumberOfCoinsWrapper>
+          Number of Coins
+          <PageNumSelector
+            options={NumOfCoinsOptions}
+            onChange={(e) => {
+              setNumOfCoins(e.value);
+            }}
+          />
+        </NumberOfCoinsWrapper>
       </Footer>
     </>
   );
