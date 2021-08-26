@@ -11,11 +11,15 @@ export const StyledNavbar = styled.div`
   justify-content: space-evenly;
 `;
 
-export const Logo = styled(Link)`
+export const LogoLink = styled(Link)`
   text-decoration: none;
 `;
 
+export const LogoImage = styled.img`
+  width: 155px;
+`;
+
 export const SearchBar = styled(Select)`
-  width: 200px;
+  width: 400px;
   height: 3em;
 `;
