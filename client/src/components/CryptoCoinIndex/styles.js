@@ -40,9 +40,25 @@ export const CoinIcon = styled.img`
 `;
 
 export const Footer = styled.div`
-  margin: 50px;
+  margin: 30px;
+  display: flex;
+  align-items: center;
 `;
 
 export const PageNumSelector = styled(Select)`
-  width: 180px;
+  width: 130px;
+`;
+
+export const NumberOfCoinsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const NavigatorWrapper = styled.div`
+  flex-grow: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
