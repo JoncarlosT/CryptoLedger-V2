@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CryptoCoinChart from "../CryptoCoinChart/CryptoCoinChart";
 import { useQuery } from "@apollo/client";
 import coinFormat from "../../util/coinFormat";
+import ScreenSaver from "../ScreenSaver/ScreenSaver";
 import { FETCH_COINS } from "../../graphql/queries";
 import {
   ChartRow,
@@ -30,7 +31,7 @@ const CryptoCoinIndex = () => {
     },
   });
 
-  if (loading) return <div>Welcome To CryptoLedger</div>;
+  if (loading) return <ScreenSaver />;
   if (error) return <h1>{error}</h1>;
 
   const { fetchCoins } = data;
