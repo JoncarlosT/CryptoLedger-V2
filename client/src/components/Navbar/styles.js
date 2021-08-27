@@ -11,7 +11,7 @@ export const StyledNavbar = styled.div`
   justify-content: space-evenly;
 `;
 
-export const LogoLink = styled(Link)`
+export const NavLink = styled(Link)`
   text-decoration: none;
 `;
 
@@ -20,6 +20,12 @@ export const LogoImage = styled.img`
 `;
 
 export const SearchBar = styled(Select)`
-  width: 400px;
-  height: 3em;
+  width: 500px;
+  height: 2em;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
 `;

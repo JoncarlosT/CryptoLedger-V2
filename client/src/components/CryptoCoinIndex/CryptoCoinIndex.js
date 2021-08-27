@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import coinFormat from "../../util/coinFormat";
 import ScreenSaver from "../ScreenSaver/ScreenSaver";
 import { FETCH_COINS } from "../../graphql/queries";
+import StyledButton from "../StyledButton/StyledButton";
 import {
   ChartRow,
   ChartBox,
@@ -77,8 +78,10 @@ const CryptoCoinIndex = () => {
 
       <Footer>
         <NavigatorWrapper>
-          <button
+          <StyledButton
+            width={"100px"}
             onClick={(e) => {
+              e.preventDefault();
               if (pageNum === 1) {
               } else {
                 setPageNum(pageNum - 1);
@@ -86,15 +89,17 @@ const CryptoCoinIndex = () => {
             }}
           >
             Back
-          </button>
+          </StyledButton>
           {pageNum}
-          <button
+          <StyledButton
+            width={"100px"}
             onClick={(e) => {
+              e.preventDefault();
               setPageNum(pageNum + 1);
             }}
           >
-            Front
-          </button>
+            Next
+          </StyledButton>
         </NavigatorWrapper>
 
         <NumberOfCoinsWrapper>
