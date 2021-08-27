@@ -22,7 +22,7 @@ export const StyledButtonDiv = styled.button`
 
 export const Span = styled.span`
   align-items: center;
-  background: #fff;
+  background: #f2f2f2;
   border-radius: 0.12em;
   display: flex;
   justify-content: center;
