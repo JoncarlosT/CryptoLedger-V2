@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button`
+export const StyledButtonDiv = styled.button`
   background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
   border-radius: 0.12em;
   box-sizing: border-box;
@@ -14,7 +14,6 @@ export const StyledButton = styled.button`
   width: 6em;
   z-index: 2;
   border-style: none;
-  /* outline: 1000px; */
 
   :hover {
     color: #fff;

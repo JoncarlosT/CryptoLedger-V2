@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import coinData from "../../data/coin_storage.json";
 import { createFilter } from "react-select";
-import { Link } from "react-router-dom/";
 import Logo from "../../assets/CL_Logo.png";
-import { StyledNavbar, LogoLink, SearchBar, LogoImage } from "./styles";
+import {
+  StyledNavbar,
+  NavLink,
+  SearchBar,
+  LogoImage,
+  ButtonWrapper,
+} from "./styles";
 import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "../../graphql/queries";
+import StyledButton from "../StyledButton/StyledButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 
 const Navbar = () => {
@@ -21,9 +27,9 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <LogoLink to="/coins">
+      <NavLink to="/coins">
         <LogoImage src={Logo} alt="Logo" />
-      </LogoLink>
+      </NavLink>
       <SearchBar
         filterOption={createFilter({ ignoreAccents: false })}
         options={coinData}
@@ -35,12 +41,16 @@ const Navbar = () => {
       />
 
       {data.isLoggedIn ? (
-        <>
-          <Link to="/user">User</Link>
+        <ButtonWrapper>
+          <NavLink to="/user">
+            <StyledButton width={"100px"}>Wallet</StyledButton>
+          </NavLink>
           <LogoutButton userId={JSON.parse(data.userData)._id} />
-        </>
+        </ButtonWrapper>
       ) : (
-        <Link to="/auth">Log In</Link>
+        <NavLink to="/auth">
+          <StyledButton>Log In</StyledButton>
+        </NavLink>
       )}
     </StyledNavbar>
   );
