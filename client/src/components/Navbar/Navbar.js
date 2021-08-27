@@ -49,7 +49,7 @@ const Navbar = () => {
         </ButtonWrapper>
       ) : (
         <NavLink to="/auth">
-          <StyledButton>Log In</StyledButton>
+          <StyledButton width={"100px"}>Log In</StyledButton>
         </NavLink>
       )}
     </StyledNavbar>
