@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGOUT_USER } from "../../graphql/mutations";
 import { IS_LOGGED_IN } from "../../graphql/queries";
+import { StyledButton, Span } from "./styles";
 
 const LogoutButton = ({ userId }) => {
   const history = useHistory();
@@ -31,15 +32,15 @@ const LogoutButton = ({ userId }) => {
   if (error) return `Submission error! ${error.message}`;
 
   return (
-    <button
+    <StyledButton
       onClick={(e) => {
         e.preventDefault();
         logoutFunction();
         history.push("/coins");
       }}
     >
-      LogoutButton
-    </button>
+      <Span>Logout</Span>
+    </StyledButton>
   );
 };
 
