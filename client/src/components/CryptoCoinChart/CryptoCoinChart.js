@@ -25,8 +25,6 @@ const CryptoCoinChart = ({ coinId, full, width, height }) => {
     },
   });
 
-  console.log(data);
-
   if (loading)
     return (
       <div>
