@@ -30,6 +30,7 @@ const UserLoginForm = () => {
       });
     },
   });
+  console.log(error);
 
   if (loading) return "Submitting...";
   if (error) return `Submission error! ${error.message}`;

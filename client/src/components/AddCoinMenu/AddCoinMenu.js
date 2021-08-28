@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_COIN_TO_USER_WALLET } from "../../graphql/mutations";
+import StyledButton from "../StyledButton/StyledButton";
 
 const AddCoinMenu = ({ coinData, userData }) => {
   const [amount, setAmount] = useState(undefined);
@@ -27,7 +28,9 @@ const AddCoinMenu = ({ coinData, userData }) => {
         placeholder="Amount"
       />
 
-      <button onClick={() => addCoinToUserWallet()}>Add Coin</button>
+      <StyledButton onClick={() => addCoinToUserWallet()}>
+        Add Coin
+      </StyledButton>
 
       {called ? <h1>Added</h1> : <></>}
     </div>

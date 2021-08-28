@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SELL_COIN, REMOVE_COIN } from "../../graphql/mutations";
+import StyledButton from "../StyledButton/StyledButton";
 
 const SellCoinButton = ({ coin }) => {
   const [sellAmount, setSellAmount] = useState(1);
@@ -33,7 +34,7 @@ const SellCoinButton = ({ coin }) => {
         min="1"
         max={coin.amount}
       />
-      <button
+      <StyledButton
         onClick={(e) => {
           e.preventDefault();
 
@@ -50,7 +51,7 @@ const SellCoinButton = ({ coin }) => {
         }}
       >
         Sell
-      </button>
+      </StyledButton>
     </div>
   );
 };

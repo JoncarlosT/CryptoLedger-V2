@@ -16,13 +16,13 @@ export const StyledButtonDiv = styled.button`
   border-style: none;
 
   :hover {
-    color: #fff;
+    color: #ebebeb;
   }
 `;
 
 export const Span = styled.span`
   align-items: center;
-  background: #f2f2f2;
+  background: #ebebeb;
   border-radius: 0.12em;
   display: flex;
   justify-content: center;
