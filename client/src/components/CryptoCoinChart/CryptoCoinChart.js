@@ -7,7 +7,7 @@ import { FETCH_COIN_CHART_HISTORY } from "../../graphql/queries";
 import { ChartSelector } from "./styles";
 
 const CryptoCoinChart = ({ coinId, full, width, height }) => {
-  const [days, setDays] = useState(7);
+  const [days, setDays] = useState(2);
 
   const daysOption = [
     { value: 1, label: "1 Day" },
@@ -32,6 +32,8 @@ const CryptoCoinChart = ({ coinId, full, width, height }) => {
       </div>
     );
   if (error) return <h1>{error}</h1>;
+
+  console.log(data.fetchCoinChartHistory);
 
   const { prices } = data.fetchCoinChartHistory;
 
