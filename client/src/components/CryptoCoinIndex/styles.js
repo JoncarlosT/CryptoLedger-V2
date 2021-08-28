@@ -47,6 +47,7 @@ export const Footer = styled.div`
 
 export const PageNumSelector = styled(Select)`
   width: 130px;
+  height: 3em;
 `;
 
 export const NumberOfCoinsWrapper = styled.div`
@@ -61,4 +62,9 @@ export const NavigatorWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+`;
+
+export const PageNumber = styled.h1`
+  padding-left: 50px;
+  padding-right: 50px;
 `;

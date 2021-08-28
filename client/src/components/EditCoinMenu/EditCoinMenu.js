@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { FETCH_SINGLE_COIN } from "../../graphql/queries";
 import coinFormat from "../../util/coinFormat";
-import RemoveCoinButton from "../RemoveCoinButton/RemoveCoinButton";
 import SellCoinButton from "../SellCoinButton/SellCoinButton";
 import {
   StyledEditCoinMenu,
@@ -11,6 +10,7 @@ import {
   CoinName,
   CoinSymbol,
 } from "./styles";
+import StyledButton from "../StyledButton/StyledButton";
 
 const EditCoinMenu = ({ userCoin }) => {
   const [sellCoin, setSellCoin] = useState(false);
@@ -44,16 +44,15 @@ const EditCoinMenu = ({ userCoin }) => {
         <CoinImage src={fetchSingleCoin.image} alt="Coin_Image" />
         <CoinName>{fetchSingleCoin.name}</CoinName>
         <CoinSymbol>{fetchSingleCoin.symbol}</CoinSymbol>
-        <RemoveCoinButton coinData={userCoin} />
       </CoinHeaderWrapper>
-      <button
+      <StyledButton
         onClick={(e) => {
           e.preventDefault();
           setSellCoin(!sellCoin);
         }}
       >
         {sellCoin ? <>Cancel</> : <>Sell</>}
-      </button>
+      </StyledButton>
 
       <h1>Quantity: {coinFormat(userCoin.amount)}</h1>
       {sellCoin ? <SellCoinButton coin={userCoin} /> : <></>}

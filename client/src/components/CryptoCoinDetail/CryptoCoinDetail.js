@@ -11,6 +11,7 @@ import {
   CoinName,
   CoinSymbol,
 } from "./styles";
+import StyledButton from "../StyledButton/StyledButton";
 
 const CryptoCoinDetail = ({ coinId }) => {
   const [ShowCoinMenu, setShowCoinMenu] = useState(false);
@@ -49,11 +50,9 @@ const CryptoCoinDetail = ({ coinId }) => {
               userData={JSON.parse(loggedInData.data.userData)}
             />
           ) : (
-            <div>
-              <button onClick={() => setShowCoinMenu(!ShowCoinMenu)}>
-                Add Coin
-              </button>
-            </div>
+            <StyledButton onClick={() => setShowCoinMenu(!ShowCoinMenu)}>
+              Add Coin
+            </StyledButton>
           )
         ) : (
           <div>Log in to add </div>

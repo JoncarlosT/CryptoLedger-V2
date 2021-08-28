@@ -15,6 +15,7 @@ import {
   PageNumSelector,
   NumberOfCoinsWrapper,
   NavigatorWrapper,
+  PageNumber,
 } from "./styles";
 
 const CryptoCoinIndex = () => {
@@ -79,7 +80,7 @@ const CryptoCoinIndex = () => {
       <Footer>
         <NavigatorWrapper>
           <StyledButton
-            width={"100px"}
+            width={"80px"}
             onClick={(e) => {
               e.preventDefault();
               if (pageNum === 1) {
@@ -90,9 +91,9 @@ const CryptoCoinIndex = () => {
           >
             Back
           </StyledButton>
-          {pageNum}
+          <PageNumber>{pageNum}</PageNumber>
           <StyledButton
-            width={"100px"}
+            width={"80px"}
             onClick={(e) => {
               e.preventDefault();
               setPageNum(pageNum + 1);

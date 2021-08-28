@@ -16,7 +16,6 @@ export default function Router() {
         <Route path="/coins/:coinId" component={CryptoPage} />
         <Route path="/auth" component={AuthPage} />
         <AuthUserRoute path="/user" component={UserPage} routeType="auth" />
-        {/* <Route path="/user" component={UserPage} /> */}
       </Switch>
     </BrowserRouter>
   );

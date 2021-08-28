@@ -1,10 +1,15 @@
 import React from "react";
 import Router from "./Router";
+import styled from "styled-components";
 
 export default function App() {
   return (
-    <div>
+    <StyledApp>
       <Router />
-    </div>
+    </StyledApp>
   );
 }
+
+const StyledApp = styled.div`
+  background-color: #ebebeb;
+`;
