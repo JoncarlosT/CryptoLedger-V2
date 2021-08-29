@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-
 import UserLoginForm from "../../components/UserLogin/UserLoginForm";
 import UserRegisterForm from "../../components/UserRegisterFrom/UserRegisterForm";
+import { StyledCryptoCoinChart } from "./styles";
 
 const AuthPage = () => {
   const [LoginFormRender, setLoginFormRender] = useState(true);
 
   return (
-    <div>
+    <StyledCryptoCoinChart>
       {LoginFormRender ? <UserLoginForm /> : <UserRegisterForm />}
       <div>
         <button
@@ -19,7 +19,7 @@ const AuthPage = () => {
           Register
         </button>
       </div>
-    </div>
+    </StyledCryptoCoinChart>
   );
 };
 
