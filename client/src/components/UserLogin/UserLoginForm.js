@@ -3,10 +3,18 @@ import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../graphql/mutations";
 import { IS_LOGGED_IN } from "../../graphql/queries";
+import {
+  StyledUserLoginForm,
+  LoginForm,
+  LoginFormInput,
+  LoginFormTitle,
+} from "./styles";
+import StyledButton from "../StyledButton/StyledButton";
 
 const UserLoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const history = useHistory();
 
@@ -15,10 +23,14 @@ const UserLoginForm = () => {
       email,
       password,
     },
+    onError: (error) => {
+      setErrorMessage(error.message);
+    },
     onCompleted: (data) => {
       const { token } = data.login;
       localStorage.setItem("auth-token", token);
       localStorage.setItem("user-data", JSON.stringify(data.login));
+      history.push("/coins");
     },
     update(cache, { data }) {
       cache.writeQuery({
@@ -30,34 +42,38 @@ const UserLoginForm = () => {
       });
     },
   });
-  console.log(error);
 
   if (loading) return "Submitting...";
-  if (error) return `Submission error! ${error.message}`;
 
   return (
-    <div>
-      <form
+    <StyledUserLoginForm>
+      <LoginForm
         onSubmit={(e) => {
           e.preventDefault();
           loginFunction();
-          history.push("/coins");
         }}
       >
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          //   type="password"
-          placeholder="Password"
-        />
-        <button type="submit">Log In</button>
-      </form>
-    </div>
+        <div>
+          <LoginFormTitle>Email</LoginFormTitle>
+          <LoginFormInput
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+          />
+        </div>
+        <div>
+          <LoginFormTitle>Password</LoginFormTitle>
+          <LoginFormInput
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+        <StyledButton type="submit">Log In</StyledButton>
+        <div>{error ? `Submission error! ${errorMessage}` : <></>}</div>
+      </LoginForm>
+    </StyledUserLoginForm>
   );
 };
 
