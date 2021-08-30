@@ -33,8 +33,6 @@ const CryptoCoinChart = ({ coinId, full, width, height }) => {
     );
   if (error) return <h1>{error}</h1>;
 
-  console.log(data.fetchCoinChartHistory);
-
   const { prices } = data.fetchCoinChartHistory;
 
   const chartData = {

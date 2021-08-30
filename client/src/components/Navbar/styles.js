@@ -22,6 +22,7 @@ export const LogoImage = styled.img`
 export const SearchBar = styled(Select)`
   width: 500px;
   height: 2em;
+  z-index: 9999;
 `;
 
 export const ButtonWrapper = styled.div`

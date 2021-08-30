@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { REGISTER_USER } from "../../graphql/mutations";
 import { IS_LOGGED_IN } from "../../graphql/queries";
+import StyledButton from "../StyledButton/StyledButton";
 
 const UserRegisterForm = () => {
   const [name, setName] = useState("");
@@ -61,7 +62,7 @@ const UserRegisterForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="password"
         />
-        <button type="submit">Register</button>
+        <StyledButton type="submit">Register</StyledButton>
       </form>
     </div>
   );
