@@ -86,6 +86,7 @@ const CryptoCoinIndex = () => {
               if (pageNum === 1) {
               } else {
                 setPageNum(pageNum - 1);
+                window.scrollTo(0, 0);
               }
             }}
           >
@@ -97,6 +98,7 @@ const CryptoCoinIndex = () => {
             onClick={(e) => {
               e.preventDefault();
               setPageNum(pageNum + 1);
+              window.scrollTo(0, 0);
             }}
           >
             Next
