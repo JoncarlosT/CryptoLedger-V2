@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserLoginForm from "../../components/UserLogin/UserLoginForm";
 import UserRegisterForm from "../../components/UserRegisterFrom/UserRegisterForm";
-import { StyledCryptoCoinChart } from "./styles";
+import { StyledCryptoCoinChart, AuthNavigationWrapper } from "./styles";
 import StyledButton from "../../components/StyledButton/StyledButton";
 
 const AuthPage = () => {
@@ -9,31 +9,35 @@ const AuthPage = () => {
 
   return (
     <StyledCryptoCoinChart>
-      {LoginFormRender ? (
-        <StyledButton
-          width={"110px"}
-          onClick={(e) => {
-            e.preventDefault();
-            setLoginFormRender(!LoginFormRender);
-          }}
-        >
-          Register
-        </StyledButton>
-      ) : (
-        <StyledButton
-          width={"90px"}
-          onClick={(e) => {
-            e.preventDefault();
-            setLoginFormRender(!LoginFormRender);
-          }}
-        >
-          Login
-        </StyledButton>
-      )}
+      <div>{LoginFormRender ? <UserLoginForm /> : <UserRegisterForm />}</div>
 
-      <div style={{ backgroundColor: "red" }}>
-        {LoginFormRender ? <UserLoginForm /> : <UserRegisterForm />}
-      </div>
+      {LoginFormRender ? (
+        <AuthNavigationWrapper>
+          <h1>Dont have an account ? </h1>
+          <StyledButton
+            width={"110px"}
+            onClick={(e) => {
+              e.preventDefault();
+              setLoginFormRender(!LoginFormRender);
+            }}
+          >
+            Register
+          </StyledButton>
+        </AuthNavigationWrapper>
+      ) : (
+        <AuthNavigationWrapper>
+          <h1>Already have an Account ?</h1>
+          <StyledButton
+            width={"90px"}
+            onClick={(e) => {
+              e.preventDefault();
+              setLoginFormRender(!LoginFormRender);
+            }}
+          >
+            Login
+          </StyledButton>
+        </AuthNavigationWrapper>
+      )}
     </StyledCryptoCoinChart>
   );
 };

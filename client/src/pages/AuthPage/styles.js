@@ -7,3 +7,9 @@ export const StyledCryptoCoinChart = styled.div`
   align-items: center;
   padding-top: 100px;
 `;
+
+export const AuthNavigationWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

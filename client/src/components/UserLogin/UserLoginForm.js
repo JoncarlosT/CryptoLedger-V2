@@ -70,7 +70,9 @@ const UserLoginForm = () => {
             placeholder="Password"
           />
         </div>
-        <StyledButton type="submit">Log In</StyledButton>
+        <StyledButton width={"90px"} type="submit">
+          Log In
+        </StyledButton>
         <div>{error ? `Submission error! ${errorMessage}` : <></>}</div>
       </LoginForm>
     </StyledUserLoginForm>
