@@ -38,6 +38,7 @@ const Navbar = () => {
         value={coinId}
         onChange={(e) => setCoinId(e.id)}
         onSubmit={handleSelect()}
+        placeholder={"Search Coin"}
       />
 
       {data.isLoggedIn ? (
