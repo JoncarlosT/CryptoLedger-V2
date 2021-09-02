@@ -86,7 +86,7 @@ const CryptoCoinChart = ({ coinId, full, width, height }) => {
           styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
           defaultValue={days[1]}
           options={daysOption}
-          placeholder="7 Days"
+          placeholder={`${days} Days`}
           onChange={(e) => {
             setDays(e.value);
           }}
