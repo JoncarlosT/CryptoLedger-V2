@@ -18,9 +18,6 @@ export default function LandingPage() {
           <LandingPageText>
             We'll help you keep track of all crypto Cryptocurrencies
           </LandingPageText>
-          <LandingPageText>
-            Here is a list of coins you can add to your wallet
-          </LandingPageText>
         </LandingPageHeader>
 
         <CryptoCoinIndex />
