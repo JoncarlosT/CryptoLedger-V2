@@ -11,5 +11,5 @@ export default function App() {
 }
 
 const StyledApp = styled.div`
-  background-color: #ebebeb;
+  font-family: "Pontano Sans", sans-serif;
 `;

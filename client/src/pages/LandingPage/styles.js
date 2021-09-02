@@ -5,7 +5,6 @@ export const StyledLandingPage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: red;
 `;
 
 export const CryptoCoinIndexWrapper = styled.div`
