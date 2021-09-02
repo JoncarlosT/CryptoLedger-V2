@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import UserLoginForm from "../../components/UserLogin/UserLoginForm";
 import UserRegisterForm from "../../components/UserRegisterFrom/UserRegisterForm";
-import { StyledCryptoCoinChart, AuthNavigationWrapper } from "./styles";
+import {
+  StyledCryptoCoinChart,
+  AuthNavigationWrapper,
+  AuthNavigationHeader,
+} from "./styles";
 import StyledButton from "../../components/StyledButton/StyledButton";
 
 const AuthPage = () => {
@@ -13,7 +17,7 @@ const AuthPage = () => {
 
       {LoginFormRender ? (
         <AuthNavigationWrapper>
-          <h1>Dont have an account ? </h1>
+          <AuthNavigationHeader>Dont have an account ?</AuthNavigationHeader>
           <StyledButton
             width={"110px"}
             onClick={(e) => {
@@ -26,7 +30,7 @@ const AuthPage = () => {
         </AuthNavigationWrapper>
       ) : (
         <AuthNavigationWrapper>
-          <h1>Already have an Account ?</h1>
+          <AuthNavigationHeader>Already have an Account ?</AuthNavigationHeader>
           <StyledButton
             width={"90px"}
             onClick={(e) => {

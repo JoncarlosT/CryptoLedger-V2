@@ -13,3 +13,5 @@ export const AuthNavigationWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const AuthNavigationHeader = styled.h2``;
