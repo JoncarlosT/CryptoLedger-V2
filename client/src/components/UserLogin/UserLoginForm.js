@@ -8,6 +8,7 @@ import {
   LoginForm,
   LoginFormInput,
   LoginFormTitle,
+  LoginFormChild,
 } from "./styles";
 import StyledButton from "../StyledButton/StyledButton";
 
@@ -53,15 +54,15 @@ const UserLoginForm = () => {
           loginFunction();
         }}
       >
-        <div>
+        <LoginFormChild>
           <LoginFormTitle>Email</LoginFormTitle>
           <LoginFormInput
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
           />
-        </div>
-        <div>
+        </LoginFormChild>
+        <LoginFormChild>
           <LoginFormTitle>Password</LoginFormTitle>
           <LoginFormInput
             value={password}
@@ -69,11 +70,16 @@ const UserLoginForm = () => {
             type="password"
             placeholder="Password"
           />
-        </div>
-        <StyledButton width={"90px"} type="submit">
-          Log In
-        </StyledButton>
-        <div>{error ? `Submission error! ${errorMessage}` : <></>}</div>
+        </LoginFormChild>
+        <LoginFormChild>
+          <StyledButton width={"90px"} type="submit">
+            Log In
+          </StyledButton>
+        </LoginFormChild>
+
+        <LoginFormChild>
+          {error ? `Submission error! ${errorMessage}` : <></>}
+        </LoginFormChild>
       </LoginForm>
     </StyledUserLoginForm>
   );

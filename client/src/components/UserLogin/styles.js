@@ -12,6 +12,15 @@ export const LoginForm = styled.form`
   justify-content: space-between;
 `;
 
-export const LoginFormTitle = styled.h1``;
+export const LoginFormChild = styled.div`
+  margin: 20px;
+`;
 
-export const LoginFormInput = styled.input``;
+export const LoginFormTitle = styled.h1`
+  margin: 0;
+`;
+
+export const LoginFormInput = styled.input`
+  width: 200px;
+  height: 25px;
+`;

@@ -19,4 +19,5 @@ export const UpperSection = styled.div`
 
 export const LowerSection = styled.div`
   width: 60%;
+  margin-bottom: 50px;
 `;

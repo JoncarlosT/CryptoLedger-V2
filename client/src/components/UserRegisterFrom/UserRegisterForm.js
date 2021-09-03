@@ -3,12 +3,20 @@ import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { REGISTER_USER } from "../../graphql/mutations";
 import { IS_LOGGED_IN } from "../../graphql/queries";
+import {
+  StyledUserRegisterForm,
+  RegisterForm,
+  RegisterFormInput,
+  RegisterFormTitle,
+  RegisterFormChild,
+} from "./styles";
 import StyledButton from "../StyledButton/StyledButton";
 
 const UserRegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const history = useHistory();
 
@@ -18,10 +26,14 @@ const UserRegisterForm = () => {
       email,
       password,
     },
+    onError: (error) => {
+      setErrorMessage(error.message);
+    },
     onCompleted: (data) => {
       const { token } = data.register;
       localStorage.setItem("auth-token", token);
       localStorage.setItem("user-data", JSON.stringify(data.register));
+      history.push("/coins");
     },
     update(cache, { data }) {
       cache.writeQuery({
@@ -35,36 +47,48 @@ const UserRegisterForm = () => {
   });
 
   if (loading) return "Submitting...";
-  if (error) return `Submission error! ${error.message}`;
 
   return (
-    <div>
-      <form
+    <StyledUserRegisterForm>
+      <RegisterForm
         onSubmit={(e) => {
           e.preventDefault();
           registerFunction();
-          history.push("/coins");
         }}
       >
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="name"
-        />
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="email"
-        />
-
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="password"
-        />
-        <StyledButton type="submit">Register</StyledButton>
-      </form>
-    </div>
+        <RegisterFormChild>
+          <RegisterFormTitle>Name</RegisterFormTitle>
+          <RegisterFormInput
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="name"
+          />
+        </RegisterFormChild>
+        <RegisterFormChild>
+          <RegisterFormTitle>Email</RegisterFormTitle>
+          <RegisterFormInput
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="email"
+          />
+        </RegisterFormChild>
+        <RegisterFormChild>
+          <RegisterFormTitle>Password</RegisterFormTitle>
+          <RegisterFormInput
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="password"
+            type="password"
+          />
+        </RegisterFormChild>
+        <RegisterFormChild>
+          <StyledButton type="submit">Register</StyledButton>
+        </RegisterFormChild>
+        <RegisterFormChild>
+          {error ? `Submission error! ${errorMessage}` : <></>}
+        </RegisterFormChild>
+      </RegisterForm>
+    </StyledUserRegisterForm>
   );
 };
 
