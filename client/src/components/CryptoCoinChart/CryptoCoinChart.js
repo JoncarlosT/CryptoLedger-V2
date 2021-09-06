@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import Loading from "../../util/Loading";
 import { Line } from "react-chartjs-2";
 import { FETCH_COIN_CHART_HISTORY } from "../../graphql/queries";
-import { ChartSelector } from "./styles";
+import { ChartSelector, LoadingWrapper } from "./styles";
 
 const CryptoCoinChart = ({ coinId, full, width, height }) => {
   const [days, setDays] = useState(7);
@@ -26,9 +26,9 @@ const CryptoCoinChart = ({ coinId, full, width, height }) => {
 
   if (loading)
     return (
-      <div>
+      <LoadingWrapper>
         <Loading height={70} width={100} />
-      </div>
+      </LoadingWrapper>
     );
   if (error) return <h1>{error}</h1>;
 

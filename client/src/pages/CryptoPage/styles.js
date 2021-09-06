@@ -8,7 +8,8 @@ export const StyledCryptoPage = styled.div`
 
 export const CoinWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  margin-top: 30px;
 `;
 
 export const ChartWrapper = styled.div`
