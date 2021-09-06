@@ -18,4 +18,5 @@ export const EditCoinMenuWrapper = styled.div`
 
 export const ChartWrapper = styled.div`
   height: 500px;
+  width: inherit;
 `;
