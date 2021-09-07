@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <NavLink to="/coins">
+      <NavLink to="/">
         <LogoImage src={Logo} alt="Logo" />
       </NavLink>
       <SearchBar
@@ -37,7 +37,9 @@ const Navbar = () => {
         getOptionValue={(option) => option.id}
         value={coinId}
         onChange={(e) => setCoinId(e.id)}
-        onSubmit={handleSelect()}
+        onSubmit={() => {
+          handleSelect();
+        }}
         placeholder={"Search Coin"}
       />
 
