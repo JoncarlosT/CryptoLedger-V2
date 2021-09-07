@@ -37,7 +37,7 @@ const LogoutButton = ({ userId }) => {
       onClick={(e) => {
         e.preventDefault();
         logoutFunction();
-        history.push("/coins");
+        history.push("/");
       }}
     >
       Logout

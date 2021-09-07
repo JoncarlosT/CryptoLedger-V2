@@ -31,7 +31,7 @@ const UserLoginForm = () => {
       const { token } = data.login;
       localStorage.setItem("auth-token", token);
       localStorage.setItem("user-data", JSON.stringify(data.login));
-      history.push("/coins");
+      history.push("/");
     },
     update(cache, { data }) {
       cache.writeQuery({
