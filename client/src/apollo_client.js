@@ -13,7 +13,7 @@ const cache = new InMemoryCache({
 });
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000/graphql",
+  uri: "https://cryptoledger-v2.herokuapp.com/graphql",
   headers: {
     authorization: localStorage.getItem("auth-token"),
   },
