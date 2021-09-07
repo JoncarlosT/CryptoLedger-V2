@@ -6,10 +6,6 @@ const { graphqlHTTP } = require("express-graphql");
 const cors = require("cors");
 const model = require("./model");
 const schema = require("./schema/schema");
-const path = require("path");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 if (!DB_CONNECTION) {
   throw new Error("You must provide correct key to connect to DB");
@@ -34,9 +30,5 @@ app.use(
     schema,
   })
 );
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
 
 module.exports = app;
