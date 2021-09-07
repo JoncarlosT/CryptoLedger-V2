@@ -35,12 +35,8 @@ app.use(
   })
 );
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("/app/client/build"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname + "/app/client/build/index.html"));
-  });
-}
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/app/client/build/index.html"));
+});
 
 module.exports = app;
