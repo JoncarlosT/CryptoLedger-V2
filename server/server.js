@@ -32,9 +32,9 @@ app.use(
   "/graphql",
   graphqlHTTP({
     schema,
-    graphiql: true,
   })
 );
+console.log("hit1");
 
 if (process.env.NODE_ENV === "production") {
   console.log("hit");
