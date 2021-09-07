@@ -37,6 +37,7 @@ app.use(
 );
 
 if (process.env.NODE_ENV === "production") {
+  console.log("hit");
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
