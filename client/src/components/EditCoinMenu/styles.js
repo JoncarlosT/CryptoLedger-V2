@@ -14,6 +14,11 @@ export const CoinImage = styled.img`
   width: 50px;
 `;
 
+export const StyledButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const CoinName = styled.h1``;
 
 export const CoinSymbol = styled.h1`

@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import CryptoCoinChart from "../../components/CryptoCoinChart/CryptoCoinChart";
 import EditCoinMenu from "../../components/EditCoinMenu/EditCoinMenu";
 import { FETCH_SINGLE_USER } from "../../graphql/queries";
+import ScreenSaver from "../../components/ScreenSaver/ScreenSaver";
 import {
   StyledUserPage,
   UserCryptoChart,
@@ -17,14 +18,14 @@ const UserPage = ({ userData }) => {
     },
   });
 
-  if (loading) return <h1>loading</h1>;
+  if (loading) return <ScreenSaver />;
   if (error) return <h1>{error}</h1>;
 
   const { user } = data;
 
   return (
     <StyledUserPage>
-      <h1>{user.name}</h1>
+      <h1>{user.name}, wallet</h1>
       <h1>{user.email}</h1>
       {user.cryptoWallet.length === 0 ? (
         <h1>Add coins</h1>

@@ -108,6 +108,7 @@ const CryptoCoinIndex = () => {
         <NumberOfCoinsWrapper>
           Number of Coins
           <PageNumSelector
+            menuPlacement="top"
             options={NumOfCoinsOptions}
             onChange={(e) => {
               setNumOfCoins(e.value);
