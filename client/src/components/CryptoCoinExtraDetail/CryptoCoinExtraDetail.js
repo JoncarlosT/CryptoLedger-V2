@@ -10,11 +10,6 @@ import {
 } from "./styles";
 
 const CryptoCoinExtraDetail = ({ coinId }) => {
-  const parseHtml = (html) => {
-    const parse = new DOMParser();
-    return parse.parseFromString(html, "text/html");
-  };
-
   const { loading, data, error } = useQuery(FETCH_SINGLE_COIN, {
     variables: {
       coinId: coinId,

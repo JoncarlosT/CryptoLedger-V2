@@ -61,7 +61,7 @@ const UserRegisterForm = () => {
           <RegisterFormInput
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="name"
+            placeholder="Name"
           />
         </RegisterFormChild>
         <RegisterFormChild>
@@ -69,7 +69,7 @@ const UserRegisterForm = () => {
           <RegisterFormInput
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="email"
+            placeholder="Email"
           />
         </RegisterFormChild>
         <RegisterFormChild>
@@ -77,7 +77,7 @@ const UserRegisterForm = () => {
           <RegisterFormInput
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="password"
+            placeholder="Password"
             type="password"
           />
         </RegisterFormChild>

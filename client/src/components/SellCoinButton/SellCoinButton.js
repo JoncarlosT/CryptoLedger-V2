@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SELL_COIN, REMOVE_COIN } from "../../graphql/mutations";
 import StyledButton from "../StyledButton/StyledButton";
+import { SellingCoinInput } from "./styles";
 
 const SellCoinButton = ({ coin }) => {
   const [sellAmount, setSellAmount] = useState(1);
@@ -24,7 +25,7 @@ const SellCoinButton = ({ coin }) => {
 
   return (
     <div>
-      <input
+      <SellingCoinInput
         type="number"
         value={sellAmount}
         onChange={(e) => {

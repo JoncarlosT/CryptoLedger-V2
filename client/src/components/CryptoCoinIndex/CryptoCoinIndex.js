@@ -33,6 +33,7 @@ const CryptoCoinIndex = () => {
       numOfCoins,
       pageNum,
     },
+    onError: (error) => console.log(error),
   });
 
   if (loading) return <ScreenSaver />;
