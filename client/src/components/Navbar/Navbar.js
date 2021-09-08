@@ -17,11 +17,6 @@ import LogoutButton from "../LogoutButton/LogoutButton";
 
 const Navbar = () => {
   const history = useHistory();
-  const [coinId, setCoinId] = useState("");
-
-  const handleSelect = () => {
-    history.push(`/coins/${coinId}`);
-  };
 
   const { data } = useQuery(IS_LOGGED_IN);
 
@@ -35,10 +30,9 @@ const Navbar = () => {
         options={coinData}
         getOptionLabel={(option) => option.name}
         getOptionValue={(option) => option.id}
-        value={coinId}
-        onChange={(e) => setCoinId(e.id)}
-        onSubmit={() => {
-          handleSelect();
+        value={"Search Coin"}
+        onChange={(e) => {
+          history.push(`/coins/${e.id}`);
         }}
         placeholder={"Search Coin"}
       />

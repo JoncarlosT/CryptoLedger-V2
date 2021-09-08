@@ -9,6 +9,7 @@ import {
   CoinImage,
   CoinName,
   CoinSymbol,
+  StyledButtonWrapper,
 } from "./styles";
 import StyledButton from "../StyledButton/StyledButton";
 
@@ -45,15 +46,16 @@ const EditCoinMenu = ({ userCoin }) => {
         <CoinName>{fetchSingleCoin.name}</CoinName>
         <CoinSymbol>{fetchSingleCoin.symbol}</CoinSymbol>
       </CoinHeaderWrapper>
-      <StyledButton
-        onClick={(e) => {
-          e.preventDefault();
-          setSellCoin(!sellCoin);
-        }}
-      >
-        {sellCoin ? <>Cancel</> : <>Sell</>}
-      </StyledButton>
-
+      <StyledButtonWrapper>
+        <StyledButton
+          onClick={(e) => {
+            e.preventDefault();
+            setSellCoin(!sellCoin);
+          }}
+        >
+          {sellCoin ? <>Cancel</> : <>Sell</>}
+        </StyledButton>
+      </StyledButtonWrapper>
       <h1>Quantity: {coinFormat(userCoin.amount)}</h1>
       {sellCoin ? <SellCoinButton coin={userCoin} /> : <></>}
 
@@ -68,9 +70,11 @@ const EditCoinMenu = ({ userCoin }) => {
       </h1>
       <h1>
         Return: $
-        {totalReturn(
-          userCoin.amount * userCoin.buyPrice,
-          percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)
+        {coinFormat(
+          totalReturn(
+            userCoin.amount * userCoin.buyPrice,
+            percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)
+          )
         )}
         ({percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)}%)
       </h1>
