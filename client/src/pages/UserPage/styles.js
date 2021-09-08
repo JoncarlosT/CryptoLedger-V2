@@ -21,3 +21,7 @@ export const ChartWrapper = styled.div`
   height: 500px;
   width: inherit;
 `;
+
+export const UserName = styled.span`
+  text-transform: capitalize;
+`;

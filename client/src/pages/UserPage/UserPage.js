@@ -9,6 +9,7 @@ import {
   UserCryptoChart,
   ChartWrapper,
   EditCoinMenuWrapper,
+  UserName,
 } from "./styles";
 
 const UserPage = ({ userData }) => {
@@ -25,8 +26,16 @@ const UserPage = ({ userData }) => {
 
   return (
     <StyledUserPage>
-      <h1>{user.name}, wallet</h1>
-      <h1>{user.email}</h1>
+      {user.name.slice(-1) === "s" ? (
+        <h1>
+          <UserName>{user.name}'</UserName> CryptoWallet
+        </h1>
+      ) : (
+        <h1>
+          <UserName>{user.name}'s</UserName> CryptoWallet
+        </h1>
+      )}
+
       {user.cryptoWallet.length === 0 ? (
         <h1>Add coins</h1>
       ) : (
