@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { FETCH_SINGLE_COIN } from "../../graphql/queries";
 import coinFormat from "../../util/coinFormat";
 import SellCoinButton from "../SellCoinButton/SellCoinButton";
+import Loading from "../../util/Loading";
 import {
   StyledEditCoinMenu,
   CoinHeaderWrapper,
@@ -10,6 +11,7 @@ import {
   CoinName,
   CoinSymbol,
   StyledButtonWrapper,
+  LoadingWrapper,
 } from "./styles";
 import StyledButton from "../StyledButton/StyledButton";
 
@@ -34,7 +36,13 @@ const EditCoinMenu = ({ userCoin }) => {
     },
   });
 
-  if (loading) return <h1>loading</h1>;
+  if (loading)
+    return (
+      <LoadingWrapper>
+        <Loading />
+      </LoadingWrapper>
+    );
+
   if (error) return <h1>{error}</h1>;
 
   const { fetchSingleCoin } = data;
