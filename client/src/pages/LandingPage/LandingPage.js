@@ -14,9 +14,9 @@ export default function LandingPage() {
     <StyledLandingPage>
       <CryptoCoinIndexWrapper>
         <LandingPageHeader>
-          <LandingPageText>Welcome to CryptoLedger</LandingPageText>
+          <LandingPageText>Welcome To CryptoLedger</LandingPageText>
           <LandingPageText>
-            We'll help you keep track of all crypto Cryptocurrencies
+            We'll Help You Keep Track of All Cryptocurrencies
           </LandingPageText>
         </LandingPageHeader>
 
