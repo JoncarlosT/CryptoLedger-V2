@@ -6,7 +6,7 @@ CryptoLedger is simple app to help you keep track of over 8,000 cryptocurrencies
 
 Website live [here](https://cryptoledger-v2.herokuapp.com/)
 
-![alt text](https://github.com/JoncarlosT/CryptoLedger-V2/tree/Main/client/public/github/LandingPageDisplay.gif)
+![alt text](https://github.com/JoncarlosT/CryptoLedger-V2/blob/Main/client/public/github/LandingPageDisplay.gif)
 
 # CryptoLedger's Architecture and Technologies:
 
