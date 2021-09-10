@@ -6,13 +6,13 @@ CryptoLedger is simple app to help you keep track of over 8,000 cryptocurrencies
 
 Website live [here](https://cryptoledger-v2.herokuapp.com/)
 
-![alt text](https://github.com/JoncarlosT/TacoLover-V2/blob/main/client/public/github/TacoLover-%20Landing%20Page.gif)
+![alt text](https://github.com/JoncarlosT/CryptoLedger-V2/tree/Main/client/public/github/LandingPageDisplay.gif)
 
-# TacoLover's Architecture and Technologies:
+# CryptoLedger's Architecture and Technologies:
 
 ## Stack
 
-- Front-end - React.js, Apollo-client
+- Front-end - React.js, Apollo-Client
 - Back-end - MongoDB, Express, Node, Graphql
 
 ## Technologies
