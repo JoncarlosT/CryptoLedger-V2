@@ -38,7 +38,7 @@ Users can login and register accounts
 
 Interactive chart system that can change between 1, 7, 10, 15, and 30 Days. Your quantity, average cost, equality, and total return is also displayed and updated whenever coins are added or removed.
 
-![alt text](https://github.com/JoncarlosT/CryptoLedger-V2/tree/Main/client/public/github/coinchart.png)
+![alt text](https://github.com/JoncarlosT/CryptoLedger-V2/blob/Main/client/public/github/coinchart.PNG)
 
 ```javascript
 <StyledEditCoinMenu>
