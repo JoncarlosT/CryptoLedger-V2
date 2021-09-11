@@ -61,7 +61,9 @@ const login = async (data) => {
     const token = jwt.sign({ id: user.id }, keys.secretOrKey);
 
     return { token, loggedIn: true, ...user._doc, password: null };
-  } catch (err) {}
+  } catch (err) {
+    throw err;
+  }
 };
 
 const logout = async (data) => {
