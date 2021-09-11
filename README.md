@@ -32,6 +32,8 @@ Website live [here](https://cryptoledger-v2.herokuapp.com/)
 
 Users can login and register accounts
 
+![alt-text-1](https://github.com/JoncarlosT/CryptoLedger-V2/blob/Main/client/public/github/loginpic.PNG) ![alt-text-2](https://github.com/JoncarlosT/CryptoLedger-V2/blob/Main/client/public/github/registerpic.PNG)
+
 ## "User-Proof"
 
 ## Coin Charts
