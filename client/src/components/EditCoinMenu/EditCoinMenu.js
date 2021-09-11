@@ -70,7 +70,7 @@ const EditCoinMenu = ({ userCoin }) => {
       <h1>Average Cost: {coinFormat(userCoin.buyPrice)}</h1>
 
       <h1>
-        Equlity: $
+        Equality: $
         {coinFormat(
           Math.round(100 * userCoin.amount * fetchSingleCoin.current_price) /
             100
