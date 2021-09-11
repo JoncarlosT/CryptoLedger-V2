@@ -32,9 +32,67 @@ Website live [here](https://cryptoledger-v2.herokuapp.com/)
 
 Users can login and register accounts
 
-![alt-text-1](https://github.com/JoncarlosT/CryptoLedger-V2/blob/Main/client/public/github/loginpic.PNG) ![alt-text-2](https://github.com/JoncarlosT/CryptoLedger-V2/blob/Main/client/public/github/registerpic.PNG)
+```javascript
+const login = async (data) => {
+  try {
+    const { message, isValid } = validateLoginInputs(data);
 
-## "User-Proof"
+    if (!isValid) return new Error(message);
+
+    const { email, password } = data;
+
+    const user = await User.findOne({ email });
+
+    if (!user) return new Error("This email hasn't been registered");
+
+    const isValidPassword = await bcrypt.compareSync(password, user.password);
+    if (!isValidPassword) return new Error("Invalid password");
+
+    const token = jwt.sign({ id: user.id }, keys.secretOrKey);
+
+    return { token, loggedIn: true, ...user._doc, password: null };
+  } catch (err) {
+    throw err;
+  }
+};
+```
+
+```javascript
+const register = async (data) => {
+  try {
+    const { message, isValid } = validateRegisterInputs(data);
+
+    if (!isValid) return new Error(message);
+
+    const { name, email, password } = data;
+
+    existingUser = await User.findOne({ email });
+
+    if (existingUser) return new Error("The email is already taken");
+
+    const hashPassword = await bcrypt.hash(password, 10);
+
+    const user = new User(
+      {
+        name,
+        email,
+        password: hashPassword,
+      },
+      (err) => {
+        if (err) throw err;
+      }
+    );
+
+    user.save();
+
+    const token = jwt.sign({ id: user._id }, keys.secretOrKey);
+
+    return { token, loggedIn: true, ...user._doc, password: null };
+  } catch (err) {
+    throw err;
+  }
+};
+```
 
 ## Coin Charts
 
