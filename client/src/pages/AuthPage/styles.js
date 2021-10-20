@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
-export const StyledCryptoCoinChart = styled.div`
+export const StyledAuthPage = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 100px;
+`;
+
+export const AuthFormWrapper = styled.div`
+  background-color: red;
 `;
 
 export const AuthNavigationWrapper = styled.div`
