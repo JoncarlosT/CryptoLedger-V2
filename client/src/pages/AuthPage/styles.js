@@ -9,7 +9,8 @@ export const StyledAuthPage = styled.div`
 `;
 
 export const AuthFormWrapper = styled.div`
-  background-color: red;
+  padding: 20px;
+  border-radius: 15px;
 `;
 
 export const AuthNavigationWrapper = styled.div`
