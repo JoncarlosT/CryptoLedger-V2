@@ -17,7 +17,7 @@ const AuthPage = () => {
 
       {LoginFormRender ? (
         <AuthNavigationWrapper>
-          <AuthNavigationHeader>Dont have an account ?</AuthNavigationHeader>
+          <AuthNavigationHeader>Don't have an account ?</AuthNavigationHeader>
           <StyledButton
             width={"110px"}
             onClick={(e) => {
