@@ -85,7 +85,7 @@ const UserRegisterForm = () => {
           <StyledButton type="submit">Register</StyledButton>
         </RegisterFormChild>
         <RegisterFormChild>
-          {error ? `Submission error! ${errorMessage}` : <></>}
+          {error ? `${errorMessage}` : <></>}
         </RegisterFormChild>
       </RegisterForm>
     </StyledUserRegisterForm>
