@@ -77,9 +77,7 @@ const UserLoginForm = () => {
           </StyledButton>
         </LoginFormChild>
 
-        <LoginFormChild>
-          {error ? `Submission error! ${errorMessage}` : <></>}
-        </LoginFormChild>
+        <LoginFormChild>{error ? `${errorMessage}` : <></>}</LoginFormChild>
       </LoginForm>
     </StyledUserLoginForm>
   );
