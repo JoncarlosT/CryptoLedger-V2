@@ -17,6 +17,7 @@ export const AuthNavigationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: red;
 `;
 
 export const AuthNavigationHeader = styled.h2``;
