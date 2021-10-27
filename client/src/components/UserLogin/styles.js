@@ -13,7 +13,7 @@ export const LoginForm = styled.form`
 `;
 
 export const LoginFormChild = styled.div`
-  margin: 20px;
+  margin: 10px;
 `;
 
 export const LoginFormTitle = styled.h1`
