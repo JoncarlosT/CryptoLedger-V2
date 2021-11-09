@@ -9,6 +9,7 @@ export const StyledNavbar = styled.div`
   padding: 1em;
   align-items: center;
   justify-content: space-evenly;
+  background-color: #191a19;
 `;
 
 export const NavLink = styled(Link)`

@@ -13,6 +13,7 @@ export const LeftSide = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
 `;
 
 export const HeaderWrapper = styled.div`
