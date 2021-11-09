@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import coinData from "../../data/coin_storage.json";
 import { createFilter } from "react-select";
-import Logo from "../../assets/CL_Logo.png";
+import Logo from "../../assets/CL_White_Logo.png";
 import {
   StyledNavbar,
   NavLink,
