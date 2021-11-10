@@ -7,6 +7,7 @@ export const ChartRow = styled.div`
   flex-direction: row;
   align-items: center;
   border-bottom: dotted 1px grey;
+  color: white;
 `;
 
 export const ChartBox = styled.div`

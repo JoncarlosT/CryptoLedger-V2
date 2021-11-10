@@ -11,6 +11,7 @@ import {
   HeaderWrapper,
 } from "./styles";
 import StyledButton from "../../components/StyledButton/StyledButton";
+import Combine_Logo from "../../assets/Combine_Logo.png";
 
 const AuthPage = () => {
   const [LoginFormRender, setLoginFormRender] = useState(true);
@@ -19,6 +20,7 @@ const AuthPage = () => {
     <StyledAuthPage>
       <LeftSide>
         <HeaderWrapper>
+          <img src={Combine_Logo} alt="Logo" style={{ width: "155px" }} />
           <h1>CryptoLedger will help</h1>
           <h1>you keep track</h1>
           <h1>of 8,000+ coins</h1>

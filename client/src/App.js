@@ -12,4 +12,5 @@ export default function App() {
 
 const StyledApp = styled.div`
   font-family: "Pontano Sans", sans-serif;
+  color: white;
 `;
