@@ -63,7 +63,9 @@ const CryptoCoinChart = ({ coinId, full, width, height }) => {
 
   const fullChartOptions = {
     plugins: {
-      legend: { display: false },
+      legend: {
+        display: false,
+      },
     },
 
     scales: {
@@ -73,6 +75,12 @@ const CryptoCoinChart = ({ coinId, full, width, height }) => {
         },
         ticks: {
           maxTicksLimit: days,
+          color: "#fff",
+        },
+      },
+      y: {
+        ticks: {
+          color: "#fff",
         },
       },
     },
