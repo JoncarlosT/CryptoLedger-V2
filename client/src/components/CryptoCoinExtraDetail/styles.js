@@ -21,3 +21,7 @@ export const LowerSection = styled.div`
   width: 60%;
   margin-bottom: 50px;
 `;
+
+export const DescriptionSection = styled.div`
+  font-size: 22px;
+`;

@@ -7,6 +7,7 @@ import {
   UpperRow,
   UpperSection,
   LowerSection,
+  DescriptionSection,
 } from "./styles";
 
 const CryptoCoinExtraDetail = ({ coinId }) => {
@@ -77,7 +78,7 @@ const CryptoCoinExtraDetail = ({ coinId }) => {
           {fetchSingleCoin.description === "" ? (
             <> N/A</>
           ) : (
-            <div
+            <DescriptionSection
               dangerouslySetInnerHTML={{ __html: fetchSingleCoin.description }}
             />
           )}
