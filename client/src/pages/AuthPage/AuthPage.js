@@ -6,8 +6,8 @@ import {
   AuthNavigationWrapper,
   AuthNavigationHeader,
   AuthFormWrapper,
-  LeftSide,
-  RightSide,
+  AuthSide,
+  DetailSide,
   HeaderWrapper,
 } from "./styles";
 import StyledButton from "../../components/StyledButton/StyledButton";
@@ -18,16 +18,7 @@ const AuthPage = () => {
 
   return (
     <StyledAuthPage>
-      <LeftSide>
-        <HeaderWrapper>
-          <img src={Combine_Logo} alt="Logo" style={{ width: "155px" }} />
-          <h1>CryptoLedger will help</h1>
-          <h1>you keep track</h1>
-          <h1>of 8,000+ coins</h1>
-          <h1>and calculate your equality in each</h1>
-        </HeaderWrapper>
-      </LeftSide>
-      <RightSide>
+      <AuthSide>
         <AuthFormWrapper>
           <div>
             {LoginFormRender ? <UserLoginForm /> : <UserRegisterForm />}
@@ -65,7 +56,17 @@ const AuthPage = () => {
             </AuthNavigationWrapper>
           )}
         </AuthFormWrapper>
-      </RightSide>
+      </AuthSide>
+
+      <DetailSide>
+        <HeaderWrapper>
+          <img src={Combine_Logo} alt="Logo" style={{ width: "155px" }} />
+          <h1>CryptoLedger will help</h1>
+          <h1>you keep track</h1>
+          <h1>of 8,000+ coins</h1>
+          <h1>and calculate your equality in each</h1>
+        </HeaderWrapper>
+      </DetailSide>
     </StyledAuthPage>
   );
 };
