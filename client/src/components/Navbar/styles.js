@@ -20,6 +20,10 @@ export const LogoImage = styled.img`
   width: 155px;
 `;
 
+export const MobileLogoImage = styled.img`
+  width: 60px;
+`;
+
 export const SearchBar = styled(Select)`
   width: 500px;
   height: 2em;
