@@ -96,6 +96,9 @@ const Navbar = () => {
               keepMounted
               open={Boolean(anchorEl)}
               onClose={handleClose}
+              style={{
+                marginTop: 60,
+              }}
             >
               <MenuItem onClick={handleClose}>
                 <MobileMenuItem to="/user">Wallet</MobileMenuItem>
