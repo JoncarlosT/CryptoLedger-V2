@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Select from "react-select";
+import { device } from "../../device";
 
 export const StyledNavbar = styled.div`
   background: none;
@@ -8,6 +9,7 @@ export const StyledNavbar = styled.div`
   display: flex;
   padding: 1em;
   align-items: center;
+  width: 90vw;
   justify-content: space-evenly;
   background-color: #191a19;
 `;
