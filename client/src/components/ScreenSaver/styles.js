@@ -6,6 +6,7 @@ export const StyledScreenSaver = styled.div`
   justify-content: center;
   align-items: center;
   height: 90vh;
+  background-color: red;
 `;
 
 export const LogoImage = styled.img`
