@@ -40,7 +40,7 @@ const Navbar = () => {
 
   useEffect(() => {
     checkPageSize();
-  }, []);
+  });
 
   window.addEventListener("resize", checkPageSize);
 

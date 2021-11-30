@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-import { device } from "../../device";
 
 export const StyledNavbar = styled.div`
   background: none;
