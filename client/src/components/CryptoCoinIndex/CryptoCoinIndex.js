@@ -115,41 +115,14 @@ const CryptoCoinIndex = () => {
                     <CryptoCoinChart
                       coinId={coin.id}
                       days={7}
-                      height={250}
-                      width={650}
+                      height={50}
+                      width={100}
                     />
                   </ChartBox>
                 </ChartRow>
               </CoinDetailLink>
             );
           })}
-      {/* 
-      {fetchCoins.map((coin, idx) => {
-        return (
-          <CoinDetailLink to={`/coins/${coin.id}`} key={idx}>
-            <ChartRow>
-              <ChartBox>
-                <CoinDetail>
-                  <CoinIcon src={coin.image} alt={coin.name} />
-                  <div>{coin.name}</div>
-                  <div>{coin.symbol}</div>
-                </CoinDetail>
-              </ChartBox>
-              <ChartBox>${coinFormat(coin.current_price)}</ChartBox>
-              <ChartBox>${coinFormat(coin.total_volume)}</ChartBox>
-              <ChartBox>${coinFormat(coin.market_cap)}</ChartBox>
-              <ChartBox>
-                <CryptoCoinChart
-                  coinId={coin.id}
-                  days={7}
-                  height={250}
-                  width={650}
-                />
-              </ChartBox>
-            </ChartRow>
-          </CoinDetailLink>
-        );
-      })} */}
 
       <Footer>
         <NavigatorWrapper>

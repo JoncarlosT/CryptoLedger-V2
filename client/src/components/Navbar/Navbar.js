@@ -32,7 +32,7 @@ const Navbar = () => {
   const { data } = useQuery(IS_LOGGED_IN);
 
   const checkPageSize = () => {
-    if (window.innerWidth > parseInt(size.mobileL)) {
+    if (window.innerWidth > parseInt(size.tablet)) {
       setMobile(true);
       handleClose();
     } else setMobile(false);
