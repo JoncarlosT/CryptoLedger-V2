@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../device";
 
 export const StyledLandingPage = styled.div`
   display: flex;
@@ -8,7 +9,11 @@ export const StyledLandingPage = styled.div`
 `;
 
 export const CryptoCoinIndexWrapper = styled.div`
-  width: 65%;
+  width: 100%;
+
+  @media ${device.laptop} {
+    width: 70%;
+  }
 `;
 
 export const LandingPageHeader = styled.div`
@@ -19,4 +24,6 @@ export const LandingPageHeader = styled.div`
   padding-bottom: 40px;
 `;
 
-export const LandingPageText = styled.h1``;
+export const LandingPageText = styled.h1`
+  text-align: center;
+`;

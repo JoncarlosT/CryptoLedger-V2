@@ -22,5 +22,5 @@ export const RegisterFormTitle = styled.h1`
 `;
 
 export const RegisterFormChild = styled.div`
-  margin: 20px;
+  margin: 10px;
 `;

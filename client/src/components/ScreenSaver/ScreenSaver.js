@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledScreenSaver, LogoImage, Header } from "./styles";
-import Logo from "../../assets/CL_Logo.png";
+import Logo from "../../assets/CL_White_Logo.png";
 
 const ScreenSaver = () => {
   return (

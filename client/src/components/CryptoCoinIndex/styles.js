@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Select from "react-select";
+import { device } from "../../device";
 
 export const ChartRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   border-bottom: dotted 1px grey;
+  color: white;
 `;
 
 export const ChartBox = styled.div`
@@ -23,8 +25,12 @@ export const CoinDetail = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: inherit;
+  width: 100px;
   height: inherit;
+
+  @media ${device.tablet} {
+    width: inherit;
+  }
 `;
 
 export const CoinDetailLink = styled(Link)`
@@ -42,7 +48,12 @@ export const CoinIcon = styled.img`
 export const Footer = styled.div`
   margin: 30px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
 `;
 
 export const PageNumSelector = styled(Select)`
