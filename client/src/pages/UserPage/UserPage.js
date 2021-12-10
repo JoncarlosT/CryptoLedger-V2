@@ -17,7 +17,7 @@ const UserPage = ({ userData }) => {
   const [mobile, setMobile] = useState(false);
 
   const checkPageSize = () => {
-    if (window.innerWidth > parseInt(size.mobileL)) {
+    if (window.innerWidth > parseInt(size.tablet)) {
       setMobile(true);
     } else setMobile(false);
   };
