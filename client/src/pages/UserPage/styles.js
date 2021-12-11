@@ -12,7 +12,7 @@ export const UserCryptoChart = styled.div`
   flex-direction: column;
   width: 100%;
   margin-bottom: 100px;
-  background-color: red;
+  font-size: 0.8rem;
 
   @media ${device.tablet} {
     flex-direction: row;

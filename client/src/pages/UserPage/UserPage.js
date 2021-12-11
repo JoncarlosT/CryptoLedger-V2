@@ -84,8 +84,8 @@ const UserPage = ({ userData }) => {
                   <CryptoCoinChart
                     coinId={coin.name}
                     full={true}
-                    height={400}
-                    width={850}
+                    height={100}
+                    width={100}
                   />
                 </ChartWrapper>
               </UserCryptoChart>

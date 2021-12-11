@@ -12,6 +12,7 @@ import {
   CoinSymbol,
   StyledButtonWrapper,
   LoadingWrapper,
+  CoinText,
 } from "./styles";
 import StyledButton from "../StyledButton/StyledButton";
 
@@ -64,19 +65,19 @@ const EditCoinMenu = ({ userCoin }) => {
           {sellCoin ? <>Cancel</> : <>Sell</>}
         </StyledButton>
       </StyledButtonWrapper>
-      <h1>Quantity: {coinFormat(userCoin.amount)}</h1>
+      <CoinText>Quantity: {coinFormat(userCoin.amount)}</CoinText>
       {sellCoin ? <SellCoinButton coin={userCoin} /> : <></>}
 
-      <h1>Average Cost: {coinFormat(userCoin.buyPrice)}</h1>
+      <CoinText>Average Cost: {coinFormat(userCoin.buyPrice)}</CoinText>
 
-      <h1>
+      <CoinText>
         Equality: $
         {coinFormat(
           Math.round(100 * userCoin.amount * fetchSingleCoin.current_price) /
             100
         )}
-      </h1>
-      <h1>
+      </CoinText>
+      <CoinText>
         Return: $
         {coinFormat(
           totalReturn(
@@ -85,7 +86,7 @@ const EditCoinMenu = ({ userCoin }) => {
           )
         )}
         ({percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)}%)
-      </h1>
+      </CoinText>
     </StyledEditCoinMenu>
   );
 };

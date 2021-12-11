@@ -25,6 +25,8 @@ export const CoinSymbol = styled.h1`
   text-transform: uppercase;
 `;
 
+export const CoinText = styled.h1``;
+
 export const LoadingWrapper = styled.div`
   display: flex;
   justify-content: center;
