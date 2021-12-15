@@ -21,7 +21,7 @@ export const UserCryptoChart = styled.div`
 `;
 
 export const EditCoinMenuWrapper = styled.div`
-  width: 400px;
+  /* width: 400px; */
 `;
 
 export const ChartWrapper = styled.div`

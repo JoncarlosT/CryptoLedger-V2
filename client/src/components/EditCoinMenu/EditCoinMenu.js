@@ -12,6 +12,7 @@ import {
   CoinSymbol,
   StyledButtonWrapper,
   LoadingWrapper,
+  CoinTextWrapper,
   CoinText,
 } from "./styles";
 import StyledButton from "../StyledButton/StyledButton";
@@ -65,28 +66,31 @@ const EditCoinMenu = ({ userCoin }) => {
           {sellCoin ? <>Cancel</> : <>Sell</>}
         </StyledButton>
       </StyledButtonWrapper>
-      <CoinText>Quantity: {coinFormat(userCoin.amount)}</CoinText>
-      {sellCoin ? <SellCoinButton coin={userCoin} /> : <></>}
 
-      <CoinText>Average Cost: {coinFormat(userCoin.buyPrice)}</CoinText>
+      <CoinTextWrapper>
+        <CoinText>Quantity: {coinFormat(userCoin.amount)}</CoinText>
+        {sellCoin ? <SellCoinButton coin={userCoin} /> : <></>}
 
-      <CoinText>
-        Equality: $
-        {coinFormat(
-          Math.round(100 * userCoin.amount * fetchSingleCoin.current_price) /
-            100
-        )}
-      </CoinText>
-      <CoinText>
-        Return: $
-        {coinFormat(
-          totalReturn(
-            userCoin.amount * userCoin.buyPrice,
-            percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)
-          )
-        )}
-        ({percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)}%)
-      </CoinText>
+        <CoinText>Average Cost: {coinFormat(userCoin.buyPrice)}</CoinText>
+
+        <CoinText>
+          Equality: $
+          {coinFormat(
+            Math.round(100 * userCoin.amount * fetchSingleCoin.current_price) /
+              100
+          )}
+        </CoinText>
+        <CoinText>
+          Return: $
+          {coinFormat(
+            totalReturn(
+              userCoin.amount * userCoin.buyPrice,
+              percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)
+            )
+          )}
+          ({percentChange(userCoin.buyPrice, fetchSingleCoin.current_price)}%)
+        </CoinText>
+      </CoinTextWrapper>
     </StyledEditCoinMenu>
   );
 };
