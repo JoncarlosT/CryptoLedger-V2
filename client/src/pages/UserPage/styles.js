@@ -5,7 +5,6 @@ export const StyledUserPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: red;
 `;
 
 export const UserCryptoChart = styled.div`
