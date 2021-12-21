@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../device";
 
 export const StyledCryptoCoinExtraDetail = styled.div`
   display: flex;
@@ -8,9 +9,14 @@ export const StyledCryptoCoinExtraDetail = styled.div`
 
 export const UpperRow = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  font-size: 1rem;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
 `;
 
 export const UpperSection = styled.div`
@@ -18,8 +24,9 @@ export const UpperSection = styled.div`
 `;
 
 export const LowerSection = styled.div`
-  width: 60%;
   margin-bottom: 50px;
+  text-align: center;
+  width: 80%;
 `;
 
 export const DescriptionSection = styled.div`

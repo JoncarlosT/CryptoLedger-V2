@@ -29,6 +29,7 @@ export const SearchBar = styled(Select)`
   width: 500px;
   height: 2em;
   z-index: 9999;
+  color: black;
 `;
 
 export const ButtonWrapper = styled.div`

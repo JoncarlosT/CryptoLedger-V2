@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../device";
 
 export const StyledUserPage = styled.div`
   display: flex;
@@ -8,17 +9,23 @@ export const StyledUserPage = styled.div`
 
 export const UserCryptoChart = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 75%;
+  flex-direction: column;
+  width: 100%;
   margin-bottom: 100px;
+  font-size: 0.8rem;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    width: 75%;
+  }
 `;
 
 export const EditCoinMenuWrapper = styled.div`
-  width: 400px;
+  /* width: 400px; */
 `;
 
 export const ChartWrapper = styled.div`
-  height: 500px;
+  /* height: 500px; */
   width: inherit;
 `;
 

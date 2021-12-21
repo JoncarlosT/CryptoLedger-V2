@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../device";
 
 export const StyledCryptoPage = styled.div`
   display: flex;
@@ -8,12 +9,19 @@ export const StyledCryptoPage = styled.div`
 
 export const CoinWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-top: 30px;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    width: 75%;
+  }
 `;
 
 export const ChartWrapper = styled.div`
-  width: 900px;
+  padding-top: 50px;
+  width: 100%;
 `;
 
 export const CoinDetailWrapper = styled.div``;

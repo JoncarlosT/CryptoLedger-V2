@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const StyledEditCoinMenu = styled.div``;
+export const StyledEditCoinMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const CoinHeaderWrapper = styled.div`
   display: flex;
@@ -23,6 +27,15 @@ export const CoinName = styled.h1``;
 
 export const CoinSymbol = styled.h1`
   text-transform: uppercase;
+`;
+
+export const CoinTextWrapper = styled.div`
+  margin-top: 20px;
+  margin-bottom: 40px;
+`;
+
+export const CoinText = styled.h1`
+  margin: 15px;
 `;
 
 export const LoadingWrapper = styled.div`
