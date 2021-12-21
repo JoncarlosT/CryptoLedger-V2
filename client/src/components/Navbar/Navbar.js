@@ -99,9 +99,17 @@ const Navbar = () => {
               style={{
                 marginTop: 60,
               }}
+              PaperProps={{
+                style: {
+                  backgroundColor: "transparent",
+                  boxShadow: "none",
+                },
+              }}
             >
               <MenuItem onClick={handleClose}>
-                <MobileMenuItem to="/user">Wallet</MobileMenuItem>
+                <MobileMenuItem to="/user">
+                  <StyledButton width={"100px"}>Wallet</StyledButton>
+                </MobileMenuItem>
               </MenuItem>
 
               <MenuItem onClick={handleClose}>
@@ -132,9 +140,17 @@ const Navbar = () => {
             style={{
               marginTop: 60,
             }}
+            PaperProps={{
+              style: {
+                backgroundColor: "transparent",
+                boxShadow: "none",
+              },
+            }}
           >
             <MenuItem onClick={handleClose}>
-              <MobileMenuItem to="/auth">Log In</MobileMenuItem>
+              <MobileMenuItem to="/auth">
+                <StyledButton width={"100px"}>Log In</StyledButton>
+              </MobileMenuItem>
             </MenuItem>
           </Menu>
         </>
