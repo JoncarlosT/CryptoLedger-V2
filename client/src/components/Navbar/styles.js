@@ -76,6 +76,5 @@ export const Span = styled.span`
 export const MobileMenuItem = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 4vw;
   font-weight: bold;
 `;

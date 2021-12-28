@@ -59,12 +59,15 @@ export const Footer = styled.div`
 export const PageNumSelector = styled(Select)`
   width: 130px;
   height: 3em;
+  color: black;
+  z-index: 9999;
 `;
 
 export const NumberOfCoinsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-color: black;
 `;
 
 export const NavigatorWrapper = styled.div`
