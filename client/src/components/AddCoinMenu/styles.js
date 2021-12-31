@@ -13,4 +13,5 @@ export const AmountInput = styled.input`
   border-style: none;
   font-size: 1em;
   text-align: center;
+  background-color: red;
 `;
