@@ -21,7 +21,7 @@ export const CoinWrapper = styled.div`
 
 export const ChartWrapper = styled.div`
   padding-top: 50px;
-  width: 100%;
+  width: inherit;
 `;
 
 export const CoinDetailWrapper = styled.div``;
