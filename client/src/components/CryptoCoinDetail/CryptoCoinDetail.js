@@ -45,10 +45,15 @@ const CryptoCoinDetail = ({ coinId }) => {
         </div>
         {loggedInData.data.isLoggedIn ? (
           ShowCoinMenu ? (
-            <AddCoinMenu
-              coinData={fetchSingleCoin}
-              userData={JSON.parse(loggedInData.data.userData)}
-            />
+            <>
+              <AddCoinMenu
+                coinData={fetchSingleCoin}
+                userData={JSON.parse(loggedInData.data.userData)}
+              />
+              <StyledButton onClick={() => setShowCoinMenu(!ShowCoinMenu)}>
+                Close
+              </StyledButton>
+            </>
           ) : (
             <StyledButton onClick={() => setShowCoinMenu(!ShowCoinMenu)}>
               Add Coin

@@ -13,7 +13,7 @@ export const CoinWrapper = styled.div`
   align-items: center;
   margin-top: 30px;
 
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     flex-direction: row;
     width: 75%;
   }
@@ -21,7 +21,11 @@ export const CoinWrapper = styled.div`
 
 export const ChartWrapper = styled.div`
   padding-top: 50px;
-  width: 100%;
+  width: 90vw;
+
+  @media ${device.laptop} {
+    width: inherit;
+  }
 `;
 
 export const CoinDetailWrapper = styled.div``;
