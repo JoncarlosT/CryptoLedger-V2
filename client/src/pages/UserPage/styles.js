@@ -10,22 +10,19 @@ export const StyledUserPage = styled.div`
 export const UserCryptoChart = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   margin-bottom: 100px;
   font-size: 0.8rem;
 
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     flex-direction: row;
     width: 75%;
   }
 `;
 
-export const EditCoinMenuWrapper = styled.div`
-  /* width: 400px; */
-`;
+export const EditCoinMenuWrapper = styled.div``;
 
 export const ChartWrapper = styled.div`
-  /* height: 500px; */
   width: inherit;
 `;
 
