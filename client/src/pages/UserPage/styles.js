@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { device } from "../../device";
 
 export const StyledUserPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const NavLink = styled(Link)`
+  text-decoration: none;
 `;
 
 export const UserCryptoChart = styled.div`
