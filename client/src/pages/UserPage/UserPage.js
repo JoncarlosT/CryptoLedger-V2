@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
+import StyledButton from "../../components/StyledButton/StyledButton";
 import CryptoCoinChart from "../../components/CryptoCoinChart/CryptoCoinChart";
 import EditCoinMenu from "../../components/EditCoinMenu/EditCoinMenu";
 import { FETCH_SINGLE_USER } from "../../graphql/queries";
@@ -10,6 +11,7 @@ import {
   ChartWrapper,
   EditCoinMenuWrapper,
   UserName,
+  NavLink,
 } from "./styles";
 import { size } from "../../device";
 
@@ -52,7 +54,9 @@ const UserPage = ({ userData }) => {
       )}
 
       {user.cryptoWallet.length === 0 ? (
-        <h1>Add coins</h1>
+        <NavLink to="/">
+          <StyledButton>Add coins</StyledButton>
+        </NavLink>
       ) : mobile ? (
         user.cryptoWallet.map((coin, idx) => {
           return (
