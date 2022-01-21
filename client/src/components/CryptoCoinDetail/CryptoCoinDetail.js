@@ -60,7 +60,11 @@ const CryptoCoinDetail = ({ coinId }) => {
             </StyledButton>
           )
         ) : (
-          <div>Log in to add </div>
+          <div>
+            <h4 style={{ margin: 0, paddingTop: "10px" }}>
+              Log in to add to wallet
+            </h4>
+          </div>
         )}
       </FinancialWrapper>
     </StyledCryptoCoinDetail>
