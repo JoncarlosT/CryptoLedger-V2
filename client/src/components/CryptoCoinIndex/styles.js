@@ -6,6 +6,7 @@ import { device } from "../../device";
 export const ChartRow = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   border-bottom: dotted 1px grey;
   color: white;
