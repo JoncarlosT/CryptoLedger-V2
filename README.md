@@ -4,7 +4,7 @@
 
 CryptoLedger is simple app to help you keep track of over 8,000 cryptocurrencies. Users can create accounts, to add and remove cryptocurrencies to their wallets. The app provides multiple pieces of information about each cryptocurrencies.
 
-Website live [here](https://cryptoledger-v2.herokuapp.com/)
+
 
 ![alt text](https://github.com/JoncarlosT/CryptoLedger-V2/blob/Main/client/public/github/LandingPageDisplay.gif)
 
